@@ -13,8 +13,8 @@ const SignupSchema = Yup.object().shape( {
     .max( 50, 'Too Long!' )
     .required( 'Required' ),
   phoneNumber: Yup.number()
-    .min( 2, 'Too Short!' )
-    .max( 50, 'Too Long!' )
+    .min( 1000000000, 'Too Short!' )
+    .max( 9999999999, 'Too Long!' )
     .required( 'Required' ),
   password: Yup.string()
     .min( 8, 'Must be at least 8 characters long' )
@@ -22,7 +22,7 @@ const SignupSchema = Yup.object().shape( {
     .required( 'Required' ),
   terms: Yup.boolean().required( 'Required' ),
 } );
-const Order = () => {
+const Signup = () => {
   return (
     <div className="form-container">
 
@@ -70,7 +70,7 @@ const Order = () => {
               <div className="error-div">{errors.terms}</div>
             ) : null}
             <span className="button-container">
-              <button type="submit" disabled={!( dirty && isValid && values.terms )} >Create Account</button>
+              <button type="submit" disabled={!( dirty && isValid && values.terms )} >Sign Me Up!</button>
             </span>
           </Form>
         )}
@@ -78,4 +78,4 @@ const Order = () => {
     </div>
   );
 };
-export default Order;
+export default Signup;
