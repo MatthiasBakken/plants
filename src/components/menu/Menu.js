@@ -8,11 +8,12 @@ const Menu = () => {
 
   const onClickHandler = () => {
     console.log( 'clicked' );
+    window.location.replace( "/login" );
   };
 
   return (
       <div className="menu-container">
-        <div className="header"></div>
+      <div className="header"></div>
         <input type="checkbox" className="openSidebarMenu" id="openSidebarMenu" />
         <label htmlFor="openSidebarMenu" className="sidebarIconToggle">
           <div className="spinner diagonal part-1"></div>

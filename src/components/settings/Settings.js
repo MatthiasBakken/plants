@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+
+import './settings.css';
 
 
 const phoneNumberRegex = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
@@ -21,9 +23,9 @@ const ChangePhoneNumberSchema = Yup.object().shape( {
 } );
 
 const Settings = () => {
-  
+
   return (
-    <div>
+    <div className="settings-container">
       <header>
         <h1>
           Settings
@@ -40,7 +42,7 @@ const Settings = () => {
           axios.put( `https://reqres.in/api/pizza`, {
             password: values.password
           } ).then( res => {
-            console.log( res );
+            console.log( res.data );
           })
         }}
       >
@@ -73,7 +75,7 @@ const Settings = () => {
           axios.put( `https://reqres.in/api/pizza`, {
             phoneNumber: values.phoneNumber
           } ).then( res => {
-            console.log( res );
+            console.log( res.data );
           })
         }}
       >
