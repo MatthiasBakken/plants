@@ -3,7 +3,7 @@
 	flex-direction: column;
 	align-items: center;
 	width: 100vw;
-	height: 100%;
+	height: 100vh;
 }
 
 .settings-container header {
@@ -16,7 +16,7 @@ form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 50px;
+	margin-top: 60px;
 	width: 50%;
 }
 
@@ -31,4 +31,20 @@ form input {
 
 form div {
 	margin: -10px 0 10px 0;
+	color: red;
+	font-size: 12px;
+}
+.settings-forms-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 60%;
+	height: 40%;
+	margin-top: 30px;
+	box-shadow: 4px 4px 10px gray;
+}
+@media only screen and (max-width: 500px) {
+	.settings-forms-container {
+		height: 70%;
+	}
 }

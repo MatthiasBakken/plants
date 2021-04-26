@@ -31,72 +31,74 @@ const Settings = () => {
           Settings
         </h1>
       </header>
-      <Formik
-        initialValues={{
-          password: ''
-        }}
+      <div className="settings-forms-container">
+        <Formik
+          initialValues={{
+            password: ''
+          }}
 
-        validationSchema={ChangePasswordSchema}
+          validationSchema={ChangePasswordSchema}
 
-        onSubmit={( values ) => {
-          axios.put( `https://reqres.in/api/pizza`, {
-            password: values.password
-          } ).then( res => {
-            console.log( res.data );
-          })
-        }}
-      >
-        {( { errors, touched, isValid, dirty, values } ) => (
-          <Form>
-            <label>Update Password: </label>
-            <Field name="password" />
-            {errors.password && touched.password ? (
-              <div>{errors.password}</div>
-            ) : null}
-            <span>
-              <button
-                type="submit"
-                disabled={!( dirty && isValid && values.password )}
-              >
-                Submit
-              </button>
-            </span>
-          </Form>
-        )}
-      </Formik>
-      <Formik
-        initialValues={{
-          phoneNumber: ''
-        }}
+          onSubmit={( values ) => {
+            axios.put( `https://reqres.in/api/pizza`, {
+              password: values.password
+            } ).then( res => {
+              console.log( res.data );
+            })
+          }}
+        >
+          {( { errors, touched, isValid, dirty, values } ) => (
+            <Form>
+              <label>Update Password: </label>
+              <Field name="password" />
+              {errors.password && touched.password ? (
+                <div>{errors.password}</div>
+              ) : null}
+              <span>
+                <button
+                  type="submit"
+                  disabled={!( dirty && isValid && values.password )}
+                >
+                  Submit
+                </button>
+              </span>
+            </Form>
+          )}
+        </Formik>
+        <Formik
+          initialValues={{
+            phoneNumber: ''
+          }}
 
-        validationSchema={ChangePhoneNumberSchema}
+          validationSchema={ChangePhoneNumberSchema}
 
-        onSubmit={( values ) => {
-          axios.put( `https://reqres.in/api/pizza`, {
-            phoneNumber: values.phoneNumber
-          } ).then( res => {
-            console.log( res.data );
-          })
-        }}
-      >
-        {( { errors, touched, isValid, dirty, values } ) => (
-          <Form>
-            <label>Update Phone Number: </label>
-            <Field name="phoneNumber" placeholder="555-123-4567" />
-            {errors.phoneNumber && touched.phoneNumber ? (
-              <div>{errors.phoneNumber}</div>
-            ) : null}
-            <span>
-              <button
-                type="submit"
-                disabled={!( dirty && isValid && values.phoneNumber )}
-              >
-                Submit
-              </button>
-            </span>
-          </Form>
-        )}
-      </Formik>
+          onSubmit={( values ) => {
+            axios.put( `https://reqres.in/api/pizza`, {
+              phoneNumber: values.phoneNumber
+            } ).then( res => {
+              console.log( res.data );
+            })
+          }}
+        >
+          {( { errors, touched, isValid, dirty, values } ) => (
+            <Form>
+              <label>Update Phone Number: </label>
+              <Field name="phoneNumber" placeholder="555-123-4567" />
+              {errors.phoneNumber && touched.phoneNumber ? (
+                <div>{errors.phoneNumber}</div>
+              ) : null}
+              <span>
+                <button
+                  type="submit"
+                  disabled={!( dirty && isValid && values.phoneNumber )}
+                >
+                  Submit
+                </button>
+              </span>
+            </Form>
+          )}
+        </Formik>
+      </div>
     </div>
   )
 }
