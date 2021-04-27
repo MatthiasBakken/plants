@@ -31,7 +31,7 @@ const Settings = () => {
 
     return (
       <div className="settings-container">
-        <header>
+        <header className="settings-header">
           <h1>
             Settings
           </h1>
@@ -56,7 +56,7 @@ const Settings = () => {
             }}
           >
             {( { errors, touched, isValid, dirty, values } ) => (
-              <Form>
+              <Form className="forms">
                 <label>Update Password: </label>
                 <Field name="password" placeholder="abcD1234?" />
                 {errors.password && touched.password ? (
@@ -92,7 +92,7 @@ const Settings = () => {
             }}
           >
             {( { errors, touched, isValid, dirty, values } ) => (
-              <Form>
+              <Form className="forms">
                 <label>Update Phone Number: </label>
                 <Field name="phoneNumber" placeholder="555-123-4567" />
                 {errors.phoneNumber && touched.phoneNumber ? (

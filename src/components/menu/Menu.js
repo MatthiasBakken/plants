@@ -6,7 +6,6 @@ import './menu.css';
 const Menu = () => {
 
   const onClickHandler = () => {
-    console.log( 'clicked' );
     localStorage.clear();
     window.location.replace( "/login" );
   };
@@ -28,6 +27,9 @@ const Menu = () => {
             </Link>
             <Link to="/plants" >
               <li>Plants</li>
+            </Link>
+            <Link to="/create-plant" >
+              <li>Create Plant</li>
             </Link>
             <Link to="/settings">
               <li>Settings</li>
