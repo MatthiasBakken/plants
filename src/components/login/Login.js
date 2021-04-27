@@ -11,8 +11,13 @@ function Login (props){
     })
 
     function setUserInfo(event){
-        setUser({event.target.name: event.target.value})
+        setUser({...user, [event.target.name]:event.target.value,})
         console.log(user)
+    }
+
+    const handleSubmit = event =>{
+        event.preventDefault();
+        
     }
     
 
@@ -35,13 +40,17 @@ function Login (props){
                     <input
                     type='text'
                     placeholder='password...'
+                    name='password'
+                    onChange={setUserInfo}
                     />
                 </label>
 
                 <label>
                     Phone Number:
                     <input
-                    type='text'                
+                    type='text'
+                    name='phonenumber'
+                    onChange={setUserInfo}                
                     />
                 </label>
 
