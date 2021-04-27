@@ -8,6 +8,7 @@ const Menu = () => {
 
   const onClickHandler = () => {
     console.log( 'clicked' );
+    localStorage.clear();
     window.location.replace( "/login" );
   };
 

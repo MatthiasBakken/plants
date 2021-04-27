@@ -22,85 +22,99 @@ const ChangePhoneNumberSchema = Yup.object().shape( {
     .required( 'Must enter a valid number if you plan to update' )
 } );
 
+const jwtToken = localStorage.getItem( "jwtToken" );
+const userId = localStorage.getItem( "userId" );
+
 const Settings = () => {
 
-  return (
-    <div className="settings-container">
-      <header>
-        <h1>
-          Settings
-        </h1>
-      </header>
-      <div className="settings-forms-container">
-        <Formik
-          initialValues={{
-            password: ''
-          }}
+  if ( jwtToken ) {
 
-          validationSchema={ChangePasswordSchema}
-
-          onSubmit={( values ) => {
-            axios.put( `https://reqres.in/api/pizza`, {
-              password: values.password
-            } ).then( res => {
-              console.log( res.data );
-            })
-          }}
-        >
-          {( { errors, touched, isValid, dirty, values } ) => (
-            <Form>
-              <label>Update Password: </label>
-              <Field name="password" />
-              {errors.password && touched.password ? (
-                <div>{errors.password}</div>
-              ) : null}
-              <span>
-                <button
-                  type="submit"
-                  disabled={!( dirty && isValid && values.password )}
-                >
-                  Submit
-                </button>
-              </span>
-            </Form>
-          )}
-        </Formik>
-        <Formik
-          initialValues={{
-            phoneNumber: ''
-          }}
-
-          validationSchema={ChangePhoneNumberSchema}
-
-          onSubmit={( values ) => {
-            axios.put( `https://reqres.in/api/pizza`, {
-              phoneNumber: values.phoneNumber
-            } ).then( res => {
-              console.log( res.data );
-            })
-          }}
-        >
-          {( { errors, touched, isValid, dirty, values } ) => (
-            <Form>
-              <label>Update Phone Number: </label>
-              <Field name="phoneNumber" placeholder="555-123-4567" />
-              {errors.phoneNumber && touched.phoneNumber ? (
-                <div>{errors.phoneNumber}</div>
-              ) : null}
-              <span>
-                <button
-                  type="submit"
-                  disabled={!( dirty && isValid && values.phoneNumber )}
-                >
-                  Submit
-                </button>
-              </span>
-            </Form>
-          )}
-        </Formik>
+    return (
+      <div className="settings-container">
+        <header>
+          <h1>
+            Settings
+          </h1>
+        </header>
+        <div className="settings-forms-container">
+          <Formik
+            initialValues={{
+              password: ''
+            }}
+  
+            validationSchema={ChangePasswordSchema}
+  
+            onSubmit={( values ) => {
+              axios.put( `https://tt157-backend.herokuapp.com/api/users/${userId}`, {
+                password: values.password
+              } , {
+                headers: { authorization: `bearer ${jwtToken}`}
+              } ).then( res => {
+                console.log( res );
+                return res.data;
+              })
+            }}
+          >
+            {( { errors, touched, isValid, dirty, values } ) => (
+              <Form>
+                <label>Update Password: </label>
+                <Field name="password" placeholder="abcD1234?" />
+                {errors.password && touched.password ? (
+                  <div>{errors.password}</div>
+                ) : null}
+                <span>
+                  <button
+                    type="submit"
+                    disabled={!( dirty && isValid && values.password )}
+                  >
+                    Submit
+                  </button>
+                </span>
+              </Form>
+            )}
+          </Formik>
+          <Formik
+            initialValues={{
+              phoneNumber: ''
+            }}
+  
+            validationSchema={ChangePhoneNumberSchema}
+  
+            onSubmit={( values ) => {
+              axios.put( `https://tt157-backend.herokuapp.com/api/users/${userId}`, {
+                phone_number: values.phoneNumber
+              } , {
+                headers: { authorization: `bearer ${jwtToken}`}
+              } ).then( res => {
+                console.log( res );
+                return res.data;
+              })
+            }}
+          >
+            {( { errors, touched, isValid, dirty, values } ) => (
+              <Form>
+                <label>Update Phone Number: </label>
+                <Field name="phoneNumber" placeholder="555-123-4567" />
+                {errors.phoneNumber && touched.phoneNumber ? (
+                  <div>{errors.phoneNumber}</div>
+                ) : null}
+                <span>
+                  <button
+                    type="submit"
+                    disabled={!( dirty && isValid && values.phoneNumber )}
+                  >
+                    Submit
+                  </button>
+                </span>
+              </Form>
+            )}
+          </Formik>
+        </div>
       </div>
-    </div>
-  )
+    )
+  } else {
+    window.location.replace( '/login' );
+  }
 }
 
 export default Settings;
