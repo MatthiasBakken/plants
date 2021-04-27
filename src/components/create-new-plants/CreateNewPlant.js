@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+
 import { useHistory } from "react-router-dom";
-import {axiosWithAuth} from './utils/axiosWithAuth'
 import "./CreateNewPlant.css"
 
 
