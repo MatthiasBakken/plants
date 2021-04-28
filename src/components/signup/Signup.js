@@ -6,6 +6,7 @@ import axios from 'axios';
 
 import './styles.scss'
 
+
 const SignupSchema = Yup.object().shape( {
 
   username: Yup.string()
@@ -13,8 +14,8 @@ const SignupSchema = Yup.object().shape( {
     .max( 50, 'Too Long!' )
     .required( 'Required' ),
   phoneNumber: Yup.number()
-    .min( 1000000000, 'Too Short!' )
-    .max( 9999999999, 'Too Long!' )
+    .min( 10, 'Too short' )
+    .max(15, 'Too long')
     .required( 'Required' ),
   password: Yup.string()
     .min( 8, 'Must be at least 8 characters long' )
@@ -25,7 +26,6 @@ const SignupSchema = Yup.object().shape( {
 const Signup = () => {
   return (
     <div className="form-container">
-
       <Formik
         initialValues={{
           username: '',
@@ -35,19 +35,31 @@ const Signup = () => {
         }}
         validationSchema={SignupSchema}
         onSubmit={( values ) => {
-          axios.post( `https://reqres.in/api/pizza`, {
+          axios.post( "https://tt157-backend.herokuapp.com/api/auth/register", {
             username: values.username,
-            phoneNumber: values.phoneNumber,
             password: values.password,
-            terms: values.terms
+            phone_number: parseInt( values.phoneNumber.replace( /[^0-9]/g, '' ) )
           } ).then( res => {
-            // Location.replace( `/confirmation?${res.data}` );
-            // window.history.replaceState( res.data, 'confirmation', `/confirmation` );
-            console.log(res)
-          } );
+            console.log( "res", res );
+            localStorage.setItem( "jwtToken", res.data.token )
+            let jwtToken = res.data.token;
+            const parseJwt = ( token ) => {
+              if ( !token ) {
+                  return;
+              }
+              const base64Url = token.split( '.' )[ 1 ];
+              const base64 = base64Url
+                  .replace( '-', '+' )
+                  .replace( '_', '/' );
+              return JSON.parse( window.atob( base64 ) );
+            };
+            const userId = parseJwt( jwtToken ).subject;
+            localStorage.setItem( 'userId', userId );
+            window.location.replace( '/create-plant' );
+          })
         }}
       >
-        {( { errors, touched, isValid, dirty, values } ) => (
+        {( { errors, touched, isValid, dirty } ) => (
           <Form className="form">
             <label >Username: </label>
             <Field name="username" />
@@ -64,13 +76,8 @@ const Signup = () => {
             {errors.password && touched.password ? (
               <div className="error-div">{errors.email}</div>
             ) : null}
-            <label>Terms of Service: </label>
-            <Field name="terms" type="checkbox" id="terms" />
-            {errors.terms && touched.terms ? (
-              <div className="error-div">{errors.terms}</div>
-            ) : null}
             <span className="button-container">
-              <button type="submit" disabled={!( dirty && isValid && values.terms )} >Sign Me Up!</button>
+              <button type="submit" disabled={!( dirty && isValid )} >Sign Me Up!</button>
             </span>
           </Form>
         )}

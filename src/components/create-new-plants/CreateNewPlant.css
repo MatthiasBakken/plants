@@ -1,0 +1,33 @@
+form {
+  font-family: 'Source Sans Pro', Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30em;
+  height: 25em;
+  margin: auto;
+  box-shadow: 2px 2px 2px 2px lightgray;
+  margin-top: 10%;
+}
+h2 {
+  font-size: 35px;
+  padding-bottom: 0.8em;
+}
+
+input {
+  font-size: 25px;
+  color: black;
+  margin: 0.2em;
+  width: 15em;
+}
+
+button {
+  padding: 15px;
+  font-size: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  background-color: #43d9b8;
+  color: black;
+  border: white;
+}
