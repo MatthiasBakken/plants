@@ -1,18 +1,18 @@
 import React from 'react'
 import './user.scss'
 
-export default function Users(props) {
+const jwtToken = localStorage.getItem( "jwtToken" );
 
-  // const { values } = props
+const User = () => {
 
-  // if (!values) {
-  //   return <h3>Working fetching your User&apos;s details...</h3>
-  // }
-
-  return (
-    <div className='container'>
-      <h1>Water My Plants</h1>
-      <div>Stuff goes here</div>
-    </div>
-  )
+  if ( jwtToken ) {
+    return (
+      <div className='container'>
+        <h1>Water My Plants</h1>
+        <div>Stuff goes here</div>
+      </div>
+    );
+  } else {
+    window.location.replace( '/login' );
+  }
 }
