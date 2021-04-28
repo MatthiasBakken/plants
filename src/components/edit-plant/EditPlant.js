@@ -58,43 +58,47 @@ const EditPlant = () => {
       .catch( err => console.log( "cannot post plant", { err } ) );
   };
   
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h2>Add a New Plant</h2>
-        <input
+  if ( jwtToken ) {
+    return (
+      <div>
+        <form onSubmit={handleSubmit}>
+          <h2>Add a New Plant</h2>
+          <input
             type="text"
             name="nickname"
             placeholder="Nick Name"
             onChange={changeHandler}
             value={plant.nickname}
-        />
-        <input
+          />
+          <input
             type="text"
             name="species"
             placeholder="Species"
             onChange={changeHandler}
             value={plant.species}
-        />
-        <input
+          />
+          <input
             type="number"
             name="h2o_frequency"
             placeholder="H2oFrecuency"
             onChange={changeHandler}
             value={plant.h2o_frequency}
-        />
+          />
     
-        <input
+          <input
             type="string"
             name="image"
             placeholder="Image URL"
             onChange={changeHandler}
             value={plant.image}
-        />
-        <button>Update Plant</button>
-      </form>
-    </div>
-  )
+          />
+          <button>Update Plant</button>
+        </form>
+      </div>
+    );
+  } else {
+    window.location.replace( '/login' );
+  }
 }
 
 export default EditPlant;

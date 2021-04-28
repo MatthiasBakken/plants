@@ -7,21 +7,20 @@ import axios from 'axios';
 import './styles.scss'
 
 
-const SignupSchema = Yup.object().shape( {
+const phoneNumberRegex = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
 
+const SignupSchema = Yup.object().shape( {
   username: Yup.string()
     .min( 2, 'Too Short!' )
     .max( 50, 'Too Long!' )
     .required( 'Required' ),
-  phoneNumber: Yup.number()
-    .min( 10, 'Too short' )
-    .max(15, 'Too long')
+  phoneNumber: Yup.string()
+    .matches(phoneNumberRegex, 'Not a valid number')
     .required( 'Required' ),
   password: Yup.string()
     .min( 8, 'Must be at least 8 characters long' )
     .max( 16, 'Must be 16 characters or less')
     .required( 'Required' ),
-  terms: Yup.boolean().required( 'Required' ),
 } );
 const Signup = () => {
   return (
@@ -31,7 +30,6 @@ const Signup = () => {
           username: '',
           phoneNumber: '',
           password: '',
-          terms: false,
         }}
         validationSchema={SignupSchema}
         onSubmit={( values ) => {

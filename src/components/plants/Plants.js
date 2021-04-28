@@ -22,19 +22,24 @@ const Plants = () => {
       } );
     
   }, [] );
-  return (
-    <div className="plants-container">
-      <div className="plants">
-        {
-          plants.map( plant => {
-            return (
-              <Plant plantData={plant} key={plant.id} />
-            )
-          })
-        }
+
+  if ( jwtToken ) {
+    return (
+      <div className="plants-container">
+        <div className="plants">
+          {
+            plants.map( plant => {
+              return (
+                <Plant plantData={plant} key={plant.id} />
+              );
+            } )
+          }
+        </div>
       </div>
-    </div>
-  )
+    );
+  } else {
+    window.location.replace( '/login' );
+  }
 };
 
 

@@ -17,7 +17,6 @@ const LoginSchema = Yup.object().shape( {
     .min( 8, 'Must be at least 8 characters long' )
     .max( 16, 'Must be 16 characters or less')
     .required( 'Required' ),
-  terms: Yup.boolean().required( 'Required' ),
 } );
 
 function Login (){
@@ -35,7 +34,8 @@ function Login (){
                         username: values.username,
                         password: values.password
                     } ).then( res => {
-                        console.log( res );
+                        console.log( res.data );
+                        localStorage.setItem( "loginMsg", res.data.message );
                         localStorage.setItem( "jwtToken", res.data.token );
                         let jwtToken = localStorage.getItem( "jwtToken" );
                         const parseJwt = ( token ) => {
@@ -50,7 +50,7 @@ function Login (){
                         };
                         const userId = parseJwt( jwtToken ).subject;
                         localStorage.setItem( 'userId', userId );
-                        window.location.replace( '/plants' );
+                        window.location.replace( '/' );
                     } );
                 }}
             >
@@ -66,9 +66,9 @@ function Login (){
                         {errors.password && touched.password ? (
                             <div className="error-div">{errors.email}</div>
                         ) : null}
-                        <span className="button-container">
-                            <button type="submit" disabled={!( dirty && isValid)} >Sign Me Up!</button>
-                        </span>
+                        
+                            <button type="submit" disabled={!( dirty && isValid )} >Log me in!</button>
+                        
                     </Form>
                 )}
             </Formik>

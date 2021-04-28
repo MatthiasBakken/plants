@@ -9,6 +9,7 @@ import CreateNewPlant from './components/create-new-plants/CreateNewPlant';
 import EditPlant from './components/edit-plant/EditPlant';
 import Signup from './components/signup/Signup';
 import Login from './components/login/Login';
+import User from './components/user/User';
 
 import './App.css';
 
@@ -17,6 +18,9 @@ function App() {
     <div className="App">
       <Menu />
       <Switch>
+        <Route exact path="/">
+          <User />
+        </Route>
         <Route exact path="/signup">
           <Signup />
         </Route>

@@ -16,15 +16,14 @@ const jwtToken = localStorage.getItem( "jwtToken" );
 const userId = localStorage.getItem( "userId" );
 
 const CreatePlantForm = () => {
-    const [plant, setPlant] = useState(initialPlant);
+    const [ plant, setPlant ] = useState( initialPlant );
 
     const changeHandler = e => {
-        console.log( e.target.value );
-        setPlant({
+        setPlant( {
             ...plant,
-            [e.target.name]: e.target.value
-          });
-    }
+            [ e.target.name ]: e.target.value
+        } );
+    };
     
     const handleSubmit = e => {
         e.preventDefault();
@@ -44,14 +43,17 @@ const CreatePlantForm = () => {
                     plant_id: plantRes.data.id,
                 }, { headers: { authorization: `bearer ${jwtToken}` } } )
                     .then( userRes => {
-                    console.log( userRes );
-                } );
+                        console.log( userRes );
+                        window.location.replace( "/plants" );
+                    } );
             } )
             .catch( err => console.log( "cannot post plant", { err } ) );
         
         
     };
-    return(
+
+    if ( jwtToken ) {
+        return (
             <div>
             
                 <form onSubmit={handleSubmit}>
@@ -90,8 +92,11 @@ const CreatePlantForm = () => {
             
                 </form>
             </div>
-        ) 
-}
+        );
+    } else {
+        window.location.replace( '/login' );
+    };
+};
 
 
 
