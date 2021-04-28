@@ -18,16 +18,20 @@ const Plants = () => {
     } )
       .then( res => {
         console.log( res.data.plants );
-        res.data.plants.map( plant => {
-          setPlants( [...plants, plant] );
-        })
+        setPlants( res.data.plants );
       } );
     
   }, [] );
   return (
     <div className="plants-container">
       <div className="plants">
-        <Plant plantData={plants} />
+        {
+          plants.map( plant => {
+            return (
+              <Plant plantData={plant} key={plant.id} />
+            )
+          })
+        }
       </div>
     </div>
   )
