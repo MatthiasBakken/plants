@@ -1,35 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
+import './user.scss'
 
-function User(props) {
-  const [input, setInput] = useState('');
+export default function Users(props) {
 
-  const handleChange = (event) => {
-    setInput(event.target.value);
-  }
+  // const { values } = props
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    setInput('');
-  }
+  // if (!values) {
+  //   return <h3>Working fetching your User&apos;s details...</h3>
+  // }
 
   return (
-    <div>
-      <form className='userForm' onSubmit={handleSubmit}>
-        <input
-          type='text'
-          placeholder='Add a Plant'
-          value={input}
-          name='addPlant'
-          onChange={handleChange}
-          className='userInput'
-        />
-        <div>
-        <button className='userButton'>Add a Plant</button>
-        </div>
-      </form>
+    <div className='container'>
+      <h1>Water My Plants</h1>
+      <div>Stuff goes here</div>
     </div>
   )
 }
-
-export default User
