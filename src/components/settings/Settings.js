@@ -18,7 +18,7 @@ const ChangePasswordSchema = Yup.object().shape( {
 
 const ChangePhoneNumberSchema = Yup.object().shape( {
   phoneNumber: Yup.string()
-    .matches( phoneNumberRegex, 'Phone number is not valid' )
+    .matches( `${phoneNumberRegex}`, 'Phone number is not valid' )
     .required( 'Must enter a valid number if you plan to update' )
 } );
 
@@ -81,8 +81,9 @@ const Settings = () => {
             validationSchema={ChangePhoneNumberSchema}
   
             onSubmit={( values ) => {
+              let phoneNumber = parseInt( values.phoneNumber.replace( /[^0-9]/g, '' ) );
               axios.put( `https://tt157-backend.herokuapp.com/api/users/${userId}`, {
-                phone_number: values.phoneNumber
+                phone_number: phoneNumber
               } , {
                 headers: { authorization: `bearer ${jwtToken}`}
               } ).then( res => {

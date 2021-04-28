@@ -14,7 +14,6 @@ const EditPlant = () => {
   }
 
   const jwtToken = localStorage.getItem( "jwtToken" );
-  const userId = localStorage.getItem( "userId" );
 
   const [ plant, setPlant ] = useState(initialPlant);
 

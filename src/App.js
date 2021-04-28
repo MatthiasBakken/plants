@@ -7,8 +7,8 @@ import Plants from './components/plants/Plants';
 import Plant from './components/plant/Plant';
 import CreateNewPlant from './components/create-new-plants/CreateNewPlant';
 import EditPlant from './components/edit-plant/EditPlant';
-// import User from './components/user/User';
-// import Login from './components/user/Login';
+import Signup from './components/signup/Signup';
+import Login from './components/login/Login';
 
 import './App.css';
 
@@ -17,9 +17,9 @@ function App() {
     <div className="App">
       <Menu />
       <Switch>
-        {/* <Route exact path="/">
-          <User />
-        </Route> */}
+        <Route exact path="/signup">
+          <Signup />
+        </Route>
         <Route exact path="/plants">
           <Plants />
         </Route>
@@ -35,9 +35,9 @@ function App() {
         <Route exact path="/settings">
           <Settings />
         </Route>
-        {/* <Route exact path="/login">
+        <Route exact path="/login">
           <Login />
-        </Route> */}
+        </Route>
       </Switch>
     </div>
   );
