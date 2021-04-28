@@ -53,7 +53,7 @@ const Signup = () => {
             };
             const userId = parseJwt( jwtToken ).subject;
             localStorage.setItem( 'userId', userId );
-            window.location.replace( '/create-plant' );
+            window.location.replace( '/' );
           })
         }}
       >
