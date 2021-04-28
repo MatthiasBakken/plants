@@ -1,14 +1,33 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 import './menu.css';
 
 const Menu = () => {
 
   const onClickHandler = () => {
-    console.log( 'clicked' );
-    localStorage.clear();
-    window.location.replace( "/login" );
+    axios.post( `https://tt157-backend.herokuapp.com/api/auth/login`, {
+      username: 'lksdfjsdlfkdfxa',
+      password: 'sldfk24432Kaa'
+    } ).then( res => {
+      console.log( res );
+      localStorage.setItem( "jwtToken", res.data.token );
+      let jwtToken = localStorage.getItem( "jwtToken" );
+      const parseJwt = (token) => {
+        if (!token) {
+          return;
+        }
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url
+          .replace('-', '+')
+          .replace('_', '/');
+        return JSON.parse(window.atob(base64));
+      };
+      const userId = parseJwt(jwtToken).subject;
+      localStorage.setItem('userId', userId);
+    })
+    // localStorage.clear();
+    // window.location.replace( "/login" );
   };
 
   return (
@@ -28,6 +47,9 @@ const Menu = () => {
             </Link>
             <Link to="/plants" >
               <li>Plants</li>
+            </Link>
+            <Link to="/create-plant" >
+              <li>Create Plant</li>
             </Link>
             <Link to="/settings">
               <li>Settings</li>
