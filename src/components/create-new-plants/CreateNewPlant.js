@@ -88,7 +88,7 @@ const CreatePlantForm = () => {
                         value={plant.image}
                     />
                 
-                    <button>Add Plant</button>
+                    <button disabled={!(plant.nickname && plant.species && plant.h2o_frequency)}>Add Plant</button>
             
                 </form>
             </div>
