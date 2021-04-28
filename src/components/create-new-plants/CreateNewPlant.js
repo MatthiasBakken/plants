@@ -28,7 +28,7 @@ const CreatePlantForm = () => {
     
     const handleSubmit = e => {
         e.preventDefault();
-        axios.get( 'https://tt157-backend.herokuapp.com/api/plants', {
+        axios.post( 'https://tt157-backend.herokuapp.com/api/plants', {
             nickname: plant.nickname,
             species: plant.species,
             h2o_frequency: plant.h2o_frequency,
