@@ -6,6 +6,7 @@ import Menu from './components/menu/Menu';
 import Plants from './components/plants/Plants';
 import Plant from './components/plant/Plant';
 import CreateNewPlant from './components/create-new-plants/CreateNewPlant';
+import EditPlant from './components/edit-plant/EditPlant';
 // import User from './components/user/User';
 // import Login from './components/user/Login';
 
@@ -27,6 +28,9 @@ function App() {
         </Route>
         <Route exact path="/create-plant">
           <CreateNewPlant />
+        </Route>
+        <Route exact path="/edit-plant:obj">
+          <EditPlant />
         </Route>
         <Route exact path="/settings">
           <Settings />

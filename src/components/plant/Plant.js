@@ -1,16 +1,14 @@
 import React from 'react';
 
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 const Plant = ( props ) => {
-  console.log( 'props', props );
 
   const jwtToken = localStorage.getItem( "jwtToken" );
   const userId = localStorage.getItem( "userId" );
-  console.log( jwtToken );
-  const onClickEditHandler = () => {
-  }
+
 
   const onClickDeleteHandler = () => {
 
@@ -34,7 +32,9 @@ const Plant = ( props ) => {
       <p>{`H2o Frequency: ${props.plantData.h2o_frequency}`}</p>
       <img src={`${props.plantData.image ? `${props.plantData.image}` : 'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'}`} alt="plant picture" />
       <span>
-        <button onClick={() => onClickEditHandler()}>Edit</button>
+        <Link to={`/edit-plant:${props.plantData.id}`} >
+          <button >Edit</button>
+        </Link>
         <button onClick={() => onClickDeleteHandler()} >Delete</button>
       </span>
     </div>
