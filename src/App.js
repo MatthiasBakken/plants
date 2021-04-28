@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+
+import Settings from './components/settings/Settings';
+import Menu from './components/menu/Menu';
+import Plants from './components/plants/Plants';
+import Plant from './components/plant/Plant';
+import CreateNewPlant from './components/create-new-plants/CreateNewPlant';
+import EditPlant from './components/edit-plant/EditPlant';
+import Signup from './components/signup/Signup';
+import Login from './components/login/Login';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Menu />
+      <Switch>
+        <Route exact path="/signup">
+          <Signup />
+        </Route>
+        <Route exact path="/plants">
+          <Plants />
+        </Route>
+        <Route exact path="/plant:id">
+          <Plant />
+        </Route>
+        <Route exact path="/create-plant">
+          <CreateNewPlant />
+        </Route>
+        <Route exact path="/edit-plant:obj">
+          <EditPlant />
+        </Route>
+        <Route exact path="/settings">
+          <Settings />
+        </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
+      </Switch>
     </div>
   );
-}
+};
 
 export default App;
