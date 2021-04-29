@@ -12,7 +12,6 @@ const Menu = () => {
 
   return (
       <div className="menu-container">
-      <div className="header"></div>
         <input type="checkbox" className="openSidebarMenu" id="openSidebarMenu" />
         <label htmlFor="openSidebarMenu" className="sidebarIconToggle">
           <div className="spinner diagonal part-1"></div>
