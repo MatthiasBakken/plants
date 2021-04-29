@@ -10,3 +10,8 @@
 	background-color: #283618;
 	color: white;
 }
+.plant-page-container {
+	display: flex;
+	width: 100vw;
+	justify-content: center;
+}

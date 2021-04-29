@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
+import './edit-plant.css';
+
 
 const EditPlant = (props) => {
 
@@ -57,7 +59,7 @@ const EditPlant = (props) => {
   
   if ( jwtToken ) {
     return (
-      <div>
+      <div className="edit-plant-container">
         <form onSubmit={handleSubmit}>
           <h2>Edit Your Plant</h2>
           <input
