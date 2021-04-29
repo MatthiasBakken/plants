@@ -13,16 +13,14 @@ const Plant = (props) => {
 
   const onClickDeleteHandler = () => {
 
-    console.log("plant id", props.plantData.id);
-
     axios.delete(`https://tt157-backend.herokuapp.com/api/users/${userId}/plant`,
       { data: { plant_id: props.plantData.id } }, {
       headers: { authorization: `bearer ${jwtToken}` }
     }
     ).then(res => {
-      console.log(res);
+      return res.data;
     }).catch(err => {
-      console.log(err);
+      return err;
     });
   };
 

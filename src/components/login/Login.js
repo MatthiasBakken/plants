@@ -21,10 +21,10 @@ const LoginSchema = Yup.object().shape( {
 
 function Login ( props ) {
     
-    const { setTitle } = props;
+    const { pageTitle } = props;
 
     useEffect( () => {
-        setTitle( "LOGIN" );
+        pageTitle( "LOGIN" );
     }, [] );
 
     return (
@@ -40,7 +40,6 @@ function Login ( props ) {
                         username: values.username,
                         password: values.password
                     } ).then( res => {
-                        console.log( res.data );
                         localStorage.setItem( "loginMsg", res.data.message );
                         localStorage.setItem( "jwtToken", res.data.token );
                         let jwtToken = localStorage.getItem( "jwtToken" );

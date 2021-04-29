@@ -19,39 +19,39 @@ function App () {
 
   const [ title, setTitle ] = useState( "Water My Plants" );
 
-  const setTitleHandler = ( title ) => {
+  const pageTitleHandler = ( title ) => {
     setTitle( title );
     return title;
   }
 
   return (
     <div className="App">
-      <Header setTitle={setTitleHandler} propsTitle={ title } />
-      <Menu setTitle={setTitleHandler} />
+      <Header pageTitle={pageTitleHandler} propsTitle={ title } />
+      <Menu pageTitle={pageTitleHandler} />
       <Switch>
         <Route exact path="/">
-          <User setTitle={setTitleHandler} />
+          <User pageTitle={pageTitleHandler} />
         </Route>
         <Route exact path="/signup">
-          <Signup setTitle={setTitleHandler} />
+          <Signup pageTitle={pageTitleHandler} />
         </Route>
         <Route exact path="/plants">
-          <Plants setTitle={setTitleHandler} />
+          <Plants pageTitle={pageTitleHandler} />
         </Route>
         <Route exact path="/plant:id">
-          <Plant setTitle={setTitleHandler} />
+          <Plant pageTitle={pageTitleHandler} />
         </Route>
         <Route exact path="/create-plant">
-          <CreateNewPlant setTitle={setTitleHandler} />
+          <CreateNewPlant pageTitle={pageTitleHandler} />
         </Route>
         <Route exact path="/edit-plant:obj">
-          <EditPlant setTitle={setTitleHandler} />
+          <EditPlant pageTitle={pageTitleHandler} />
         </Route>
         <Route exact path="/settings">
-          <Settings setTitle={setTitleHandler} />
+          <Settings pageTitle={pageTitleHandler} />
         </Route>
         <Route exact path="/login">
-          <Login setTitle={setTitleHandler} />
+          <Login pageTitle={pageTitleHandler} />
         </Route>
       </Switch>
     </div>

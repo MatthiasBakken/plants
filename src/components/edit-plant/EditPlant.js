@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
 
-const EditPlant = () => {
+const EditPlant = (props) => {
 
   const initialPlant = {
     nickname: '',
@@ -15,23 +15,21 @@ const EditPlant = () => {
 
   const jwtToken = localStorage.getItem( "jwtToken" );
 
-  const [ plant, setPlant ] = useState(initialPlant);
+  const [ plant, setPlant ] = useState( initialPlant );
+  const { pageTitle } = props;
 
   let queryStr = `${useLocation().pathname}`;
-  console.log( queryStr );
   let plantId = queryStr.split( ":" )[ 1 ];
-  console.log( "plantId", plantId );
   
   useEffect( () => {
     axios.get( `https://tt157-backend.herokuapp.com/api/plants/${plantId}` )
       .then( res => {
-        console.log( res );
+        pageTitle( "EDIT YOUR PLANT" );
         setPlant( res.data );
-      })
-  }, [])
+      } );
+  }, [] );
 
   const changeHandler = e => {
-    console.log( e.target.value );
     setPlant( {
       ...plant,
       [ e.target.name ]: e.target.value
@@ -52,7 +50,6 @@ const EditPlant = () => {
       }
     } )
       .then( plantRes => {
-        console.log( "update res", plantRes );
         window.location.replace( '/plants' );
       } )
       .catch( err => console.log( "cannot post plant", { err } ) );
@@ -62,7 +59,7 @@ const EditPlant = () => {
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <h2>Add a New Plant</h2>
+          <h2>Edit Your Plant</h2>
           <input
             type="text"
             name="nickname"

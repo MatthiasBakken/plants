@@ -24,10 +24,10 @@ const SignupSchema = Yup.object().shape( {
 } );
 
 const Signup = ( props ) => {
-  const { setTitle } = props;
+  const { pageTitle } = props;
 
   useEffect( () => {
-    setTitle( "CREATE ACCOUNT" );
+    pageTitle( "CREATE ACCOUNT" );
   }, [] );
   
   return (
@@ -45,7 +45,6 @@ const Signup = ( props ) => {
             password: values.password,
             phone_number: parseInt( values.phoneNumber.replace( /[^0-9]/g, '' ) )
           } ).then( res => {
-            console.log( "res", res );
             localStorage.setItem( "jwtToken", res.data.token )
             let jwtToken = res.data.token;
             const parseJwt = ( token ) => {

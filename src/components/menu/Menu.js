@@ -3,20 +3,12 @@ import { Link } from 'react-router-dom';
 
 import './menu.css';
 
-const Menu = ( props ) => {
-  
-  const { setTitle } = props;
+const Menu = () => {
 
   const onClickHandler = () => {
     localStorage.clear();
-    setTitle( "LOGIN" );
     window.location.replace( "/login" );
   };
-
-  const setHeaderTitle = ( title ) => {
-    localStorage.setItem( "headerLogo", title );
-    return title;
-  }
 
   return (
     <div className="menu-container">
@@ -29,16 +21,16 @@ const Menu = ( props ) => {
       <div id="sidebarMenu">
         <ul className="sidebarMenuInner">
           <li>Plants <span>Menu Options</span></li>
-          <Link to="/" onClick={() => setHeaderTitle( "Home" )}>
+          <Link to="/">
             <li>Home</li>
           </Link>
-          <Link to="/plants" onClick={() => setHeaderTitle( "Plants" )}>
+          <Link to="/plants">
             <li>Plants</li>
           </Link>
-          <Link to="/create-plant" onClick={() => setHeaderTitle( "Create Plant" )}>
+          <Link to="/create-plant">
             <li>Create Plant</li>
           </Link>
-          <Link to="/settings" onClick={() => setHeaderTitle( "Settings" )}>
+          <Link to="/settings">
             <li>Settings</li>
           </Link>
           <li onClick={() => onClickHandler()} >Logout</li>
