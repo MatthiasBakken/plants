@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Switch, Route, Link } from "react-router-dom";
-import { RiSettings3Line, RiShutDownLine } from 'react-icons/ri'
+import React, { useState } from "react";
+import { Switch, Route } from "react-router-dom";
 
 import Settings from "./components/settings/Settings";
-// import Header from "./components/header/Header"
+import Header from "./components/header/Header"
 import Menu from "./components/menu/Menu";
 import Plants from "./components/plants/Plants";
 import Plant from "./components/plant/Plant";
@@ -19,38 +18,15 @@ import "./components/header/header.css";
 function App () {
 
   const [ title, setTitle ] = useState( "Water My Plants" );
-  
-  const onClickHandler = () => {
-    localStorage.clear();
-    setTitle( "Login" );
-    window.location.replace( "/login" );
-  };
 
   const setTitleHandler = ( title ) => {
     setTitle( title );
     return title;
   }
 
-
-
   return (
     <div className="App">
-      {
-        title === "LOGIN" || title === "CREATE ACCOUNT" ?
-          <div className="header">
-            <h1 className="headerLogo">{`${title.toUpperCase()}`}</h1>
-          </div>
-          :
-          <div className="header">
-            <h1 className="headerLogo">{`${title.toUpperCase()}`}</h1>
-            <Link to="/settings">
-              <RiSettings3Line className="set-icon" />
-            </Link>
-            <span className="set">Settings</span>
-            <RiShutDownLine className="log-icon" onClick={() => onClickHandler()} />
-            <span className="log" >Logout</span>
-          </div>
-      }
+      <Header setTitle={setTitleHandler} propsTitle={ title } />
       <Menu setTitle={setTitleHandler} />
       <Switch>
         <Route exact path="/">
