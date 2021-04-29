@@ -1,0 +1,60 @@
+.header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 100%;
+	box-shadow: none;
+	background: $secondary;
+	position: sticky;
+	height: 60px !important;
+	top: 0px;
+	// overflow: hidden;
+	z-index: 10;
+
+	.headerLogo {
+		font-family: "Varela Round", sans-serif;
+		font-size: 1.1rem;
+		color: $accent3;
+	}
+
+	.set-icon {
+		font-size: 1.7rem;
+		color: white;
+		position: absolute;
+		top: 16px;
+		right: 230px;
+
+		&:hover {
+			color: $accent1;
+		}
+	}
+
+	.set {
+		position: absolute;
+		top: 20px;
+		right: 160px;
+		color: $accent3;
+	}
+
+	.log-icon {
+		font-size: 1.6rem;
+		color: white;
+		position: absolute;
+		top: 16px;
+		right: 90px;
+
+		&:hover {
+			color: $accent1;
+			cursor: pointer;
+		}
+	}
+
+	.log {
+		position: absolute;
+		top: 20px;
+		right: 25px;
+		color: $accent3;
+	}
+}

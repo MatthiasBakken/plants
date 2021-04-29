@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -22,7 +22,14 @@ const SignupSchema = Yup.object().shape( {
     .max( 16, 'Must be 16 characters or less')
     .required( 'Required' ),
 } );
-const Signup = () => {
+
+const Signup = ( props ) => {
+  const { setTitle } = props;
+
+  useEffect( () => {
+    setTitle( "CREATE ACCOUNT" );
+  }, [] );
+  
   return (
     <div className="form-container">
       <Formik

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
@@ -25,17 +25,17 @@ const ChangePhoneNumberSchema = Yup.object().shape( {
 const jwtToken = localStorage.getItem( "jwtToken" );
 const userId = localStorage.getItem( "userId" );
 
-const Settings = () => {
+const Settings = (props) => {
+  const { setTitle } = props;
+
+  useEffect( () => {
+    setTitle( "SETTINGS" );
+  }, [])
 
   if ( jwtToken ) {
 
     return (
       <div className="settings-container">
-        <header className="settings-header">
-          <h1>
-            Settings
-          </h1>
-        </header>
         <div className="settings-forms-container">
           <Formik
             initialValues={{
