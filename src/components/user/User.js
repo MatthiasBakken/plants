@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { Link } from 'react-router-dom';
-
-import Plants from '../plants/Plants';
 
 import './user.scss'
 
 const jwtToken = localStorage.getItem( "jwtToken" );
 const loginMsg = localStorage.getItem( "loginMsg" );
 
-const User = () => {
+const User = (props) => {
+  const { setTitle } = props;
+
+  useEffect( () => {
+    setTitle( "HOME" );
+  }, [])
 
   if ( jwtToken ) {
     return (

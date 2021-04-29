@@ -8,9 +8,10 @@ import './Plants.css'
 const jwtToken = localStorage.getItem( "jwtToken" );
 const userId = localStorage.getItem( "userId" );
 
-const Plants = () => {
+const Plants = (props) => {
 
   const [ plants, setPlants ] = useState( [] );
+  const { setTitle } = props;
 
   useEffect( () => {
     axios.get( `https://tt157-backend.herokuapp.com/api/users/${userId}`, {
@@ -18,6 +19,7 @@ const Plants = () => {
     } )
       .then( res => {
         console.log( res.data.plants );
+        setTitle( "PLANTS" );
         setPlants( res.data.plants );
       } );
     

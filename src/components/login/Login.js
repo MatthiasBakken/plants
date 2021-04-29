@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -19,7 +19,13 @@ const LoginSchema = Yup.object().shape( {
     .required( 'Required' ),
 } );
 
-function Login (){
+function Login ( props ) {
+    
+    const { setTitle } = props;
+
+    useEffect( () => {
+        setTitle( "LOGIN" );
+    }, [] );
 
     return (
         <div className="form-container">

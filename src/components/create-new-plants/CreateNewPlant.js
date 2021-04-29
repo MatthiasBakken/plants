@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import axios from 'axios';
 
@@ -15,8 +15,13 @@ const initialPlant = {
 const jwtToken = localStorage.getItem( "jwtToken" );
 const userId = localStorage.getItem( "userId" );
 
-const CreatePlantForm = () => {
+const CreatePlantForm = (props) => {
     const [ plant, setPlant ] = useState( initialPlant );
+    const { setTitle } = props;
+    
+    useEffect( () => {
+        setTitle( "ADD A PLANT" );
+    }, [] );
 
     const changeHandler = e => {
         setPlant( {
