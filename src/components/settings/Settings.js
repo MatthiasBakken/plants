@@ -26,10 +26,10 @@ const jwtToken = localStorage.getItem( "jwtToken" );
 const userId = localStorage.getItem( "userId" );
 
 const Settings = (props) => {
-  const { setTitle } = props;
+  const { pageTitle } = props;
 
   useEffect( () => {
-    setTitle( "SETTINGS" );
+    pageTitle( "SETTINGS" );
   }, [])
 
   if ( jwtToken ) {
@@ -50,7 +50,6 @@ const Settings = (props) => {
               } , {
                 headers: { authorization: `bearer ${jwtToken}`}
               } ).then( res => {
-                console.log( res );
                 return res.data;
               })
             }}
@@ -87,7 +86,6 @@ const Settings = (props) => {
               } , {
                 headers: { authorization: `bearer ${jwtToken}`}
               } ).then( res => {
-                console.log( res );
                 return res.data;
               })
             }}

@@ -8,10 +8,10 @@ const jwtToken = localStorage.getItem( "jwtToken" );
 const loginMsg = localStorage.getItem( "loginMsg" );
 
 const User = (props) => {
-  const { setTitle } = props;
+  const { pageTitle } = props;
 
   useEffect( () => {
-    setTitle( "HOME" );
+    pageTitle( "HOME" );
   }, [])
 
   if ( jwtToken ) {

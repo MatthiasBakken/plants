@@ -11,15 +11,14 @@ const userId = localStorage.getItem( "userId" );
 const Plants = (props) => {
 
   const [ plants, setPlants ] = useState( [] );
-  const { setTitle } = props;
+  const { pageTitle } = props;
 
   useEffect( () => {
     axios.get( `https://tt157-backend.herokuapp.com/api/users/${userId}`, {
       headers: { authorization: `bearer ${jwtToken}` }
     } )
       .then( res => {
-        console.log( res.data.plants );
-        setTitle( "PLANTS" );
+        pageTitle( "PLANTS" );
         setPlants( res.data.plants );
       } );
     

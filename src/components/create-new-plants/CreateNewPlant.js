@@ -17,10 +17,10 @@ const userId = localStorage.getItem( "userId" );
 
 const CreatePlantForm = (props) => {
     const [ plant, setPlant ] = useState( initialPlant );
-    const { setTitle } = props;
+    const { pageTitle } = props;
     
     useEffect( () => {
-        setTitle( "ADD A PLANT" );
+        pageTitle( "ADD A PLANT" );
     }, [] );
 
     const changeHandler = e => {
@@ -43,12 +43,10 @@ const CreatePlantForm = (props) => {
             }
         } )
             .then( plantRes => {
-                console.log( plantRes );
                 axios.post( `https://tt157-backend.herokuapp.com/api/users/${userId}`, {
                     plant_id: plantRes.data.id,
                 }, { headers: { authorization: `bearer ${jwtToken}` } } )
                     .then( userRes => {
-                        console.log( userRes );
                         window.location.replace( "/plants" );
                     } );
             } )
