@@ -22,9 +22,9 @@ const EditPlant = (props) => {
   let plantId = queryStr.split( ":" )[ 1 ];
   
   useEffect( () => {
+    pageTitle( "EDIT YOUR PLANT" );
     axios.get( `https://tt157-backend.herokuapp.com/api/plants/${plantId}` )
       .then( res => {
-        pageTitle( "EDIT YOUR PLANT" );
         setPlant( res.data );
       } );
   }, [] );
