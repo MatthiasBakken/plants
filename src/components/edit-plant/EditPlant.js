@@ -21,7 +21,8 @@ const EditPlant = (props) => {
   const { pageTitle } = props;
 
   let queryStr = `${useLocation().pathname}`;
-  let plantId = queryStr.split( ":" )[ 1 ];
+  let plantId = queryStr.split( "/" );
+  plantId = plantId[ plantId.length - 1 ];
   
   useEffect( () => {
     pageTitle( "EDIT YOUR PLANT" );
