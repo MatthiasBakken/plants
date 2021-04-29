@@ -15,6 +15,7 @@ import User from "./components/user/User";
 import "./main.scss";
 import "./components/header/header.css";
 
+
 function App () {
 
   const [ title, setTitle ] = useState( "Water My Plants" );
@@ -44,7 +45,7 @@ function App () {
         <Route exact path="/create-plant">
           <CreateNewPlant pageTitle={pageTitleHandler} />
         </Route>
-        <Route exact path="/edit-plant:obj">
+        <Route exact path="/edit-plant/:id">
           <EditPlant pageTitle={pageTitleHandler} />
         </Route>
         <Route exact path="/settings">

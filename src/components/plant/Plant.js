@@ -29,7 +29,7 @@ const Plant = (props) => {
 
       <div className="myplant">
 
-        <Link to={`/plant-page/${props.plantData.id}?nickname=${props.plantData.nickname}&species=${props.plantData.species}&h2o_frequency=${props.plantData.h2o_frequency}&image=${props.plantData.image}&id=${props.plantData.id}`} className="plant_img">
+        <Link to={`/plant-page/${props.plantData.id}?nickname=${props.plantData.nickname}&species=${props.plantData.species}&h2o_frequency=${props.plantData.h2o_frequency}&image=${props.plantData.image}&id=${props.plantData.id}`} className="plant_img ">
           <img src={`${props.plantData.image ? `${props.plantData.image}` : 'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'}`} alt="plant" />
         </Link>
 
@@ -51,7 +51,7 @@ const Plant = (props) => {
         </div>
 
         <div className="edit_delete_buttons">
-          <Link to={`/edit-plant:${props.plantData.id}`} >
+          <Link to={`/edit-plant/${props.plantData.id}`} >
             <button >Edit</button>
           </Link>
           <button onClick={() => onClickDeleteHandler()} >Delete</button>

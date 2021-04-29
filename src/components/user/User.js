@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-
 import { Link } from 'react-router-dom';
 
 import './user.scss'
+
 
 const jwtToken = localStorage.getItem( "jwtToken" );
 const loginMsg = localStorage.getItem( "loginMsg" );

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
 import Plant from '../plant/Plant';
 import './Plants.css'
+
 
 const jwtToken = localStorage.getItem( "jwtToken" );
 const userId = localStorage.getItem( "userId" );

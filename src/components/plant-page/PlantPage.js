@@ -71,7 +71,7 @@ const PlantPage = (props) => {
             </div>
           </div>
           <div className="edit_delete_buttons">
-            <Link to={`/edit-plant:${plant.id}`} >
+            <Link to={`/edit-plant/${plant.id}`} >
               <button >Edit</button>
             </Link>
             <button onClick={() => onClickDeleteHandler()} >Delete</button>
