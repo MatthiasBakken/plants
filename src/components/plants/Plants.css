@@ -1,0 +1,23 @@
+.plants {
+	display: flex;
+}
+.plants-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;
+}
+@media screen and (max-width: 2066px) {
+	.plants-wrapper {
+		width: 1542px;
+	}
+}
+@media screen and (max-width: 1546px) {
+	.plants-wrapper {
+		width: 1028px;
+	}
+}
+@media screen and (max-width: 1032px) {
+	.plants-wrapper {
+		width: 514px;
+	}
+}

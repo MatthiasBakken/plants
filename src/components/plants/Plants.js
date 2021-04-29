@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import Plant from '../plant/Plant';
-
+import './Plants.css'
 
 const jwtToken = localStorage.getItem( "jwtToken" );
 const userId = localStorage.getItem( "userId" );
@@ -27,13 +27,15 @@ const Plants = () => {
     return (
       <div className="plants-container">
         <div className="plants">
-          {
-            plants.map( plant => {
-              return (
-                <Plant plantData={plant} key={plant.id} />
-              );
-            } )
-          }
+          <div className="plants-wrapper">
+            {
+              plants.map( plant => {
+                return (
+                  <Plant plantData={plant} key={plant.id} />
+                );
+              } )
+            }
+          </div>
         </div>
       </div>
     );
