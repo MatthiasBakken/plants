@@ -1,5 +1,9 @@
-.container {
-  margin: 0 auto;
+#root .App .login-container {
+  height: 100vh;
+  margin: -50px 0 0 0;
+}
+
+#root .App .login-container .form-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,20 +14,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  text-align: center;
 }
 
-.container h1 {
-  margin: 20px 0 0 0;
+#root .App .login-container .form-container div p {
+  margin: 5px 0 0 0;
 }
-
-.container div div p {
-  margin: 20px 0 20px 0;
-  font-size: 20px;
-}
-
-.container .plant-img-container img {
-  height: 70vh;
-  width: auto;
-}
-/*# sourceMappingURL=user.css.map */
+/*# sourceMappingURL=login.css.map */

@@ -6,6 +6,24 @@
 	flex-wrap: wrap;
 	margin: 0 auto;
 }
+.edit_delete_buttons {
+	display: flex;
+	justify-content: center;
+}
+.plants-wrapper button {
+	cursor: pointer;
+	margin: 20px;
+	width: 100px;
+	border-radius: 7px;
+}
+.plants-wrapper button:hover {
+	background-color: rgb(43, 75, 11);
+	color: white;
+}
+.plant_data div span {
+	text-decoration: none;
+	color: black;
+}
 @media screen and (max-width: 2066px) {
 	.plants-wrapper {
 		width: 1542px;

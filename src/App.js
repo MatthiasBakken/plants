@@ -5,7 +5,7 @@ import Settings from "./components/settings/Settings";
 import Header from "./components/header/Header"
 import Menu from "./components/menu/Menu";
 import Plants from "./components/plants/Plants";
-import Plant from "./components/plant/Plant";
+import PlantPage from "./components/plant-page/PlantPage";
 import CreateNewPlant from "./components/create-new-plants/CreateNewPlant";
 import EditPlant from "./components/edit-plant/EditPlant";
 import Signup from "./components/signup/Signup";
@@ -38,8 +38,8 @@ function App () {
         <Route exact path="/plants">
           <Plants pageTitle={pageTitleHandler} />
         </Route>
-        <Route exact path="/plant:id">
-          <Plant pageTitle={pageTitleHandler} />
+        <Route exact path="/plant-page/:id?">
+          <PlantPage pageTitle={pageTitleHandler} />
         </Route>
         <Route exact path="/create-plant">
           <CreateNewPlant pageTitle={pageTitleHandler} />

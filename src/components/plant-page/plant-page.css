@@ -1,0 +1,17 @@
+.myplant button {
+	cursor: pointer;
+	margin: 20px;
+	width: 100px;
+	border-radius: 7px;
+	background-color: #606c38;
+	color: white;
+}
+.myplant button:hover {
+	background-color: #283618;
+	color: white;
+}
+.plant-page-container {
+	display: flex;
+	width: 100vw;
+	justify-content: center;
+}
