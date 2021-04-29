@@ -24,6 +24,16 @@ function Login ( props ) {
     const { pageTitle } = props;
 
     useEffect( () => {
+        const hr = ( new Date() ).getHours();
+        if ( hr === 0 || hr < 11 ) {
+            localStorage.setItem( "greetingTime", "Good Morning, " );
+        } else if ( hr > 10 && hr < 17 ) {
+            localStorage.setItem( "greetingTime", "Good Afternoon, " );
+        } else if ( hr > 16 && hr < 20 ) {
+            localStorage.setItem( "greetingTime", "Good Evening, " );
+        } else {
+            localStorage.setItem( "greetingTime", "Goodnight, " );
+        };
         pageTitle( "LOGIN" );
     }, [] );
 
@@ -41,7 +51,7 @@ function Login ( props ) {
                             username: values.username,
                             password: values.password
                         } ).then( res => {
-                            localStorage.setItem( "loginMsg", res.data.message );
+                            localStorage.setItem( "loginMsg", `${localStorage.getItem("greetingTime")}${res.data.message.split(" ")[0]}!` );
                             localStorage.setItem( "jwtToken", res.data.token );
                             let jwtToken = localStorage.getItem( "jwtToken" );
                             const parseJwt = ( token ) => {
