@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -32,7 +33,7 @@ const Plants = (props) => {
             {
               plants.map( plant => {
                 return (
-                  <Plant plantData={plant} key={plant.id} />
+                    <Plant plantData={plant} key={plant.id} />
                 );
               } )
             }
