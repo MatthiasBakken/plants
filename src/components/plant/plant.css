@@ -93,7 +93,14 @@ body {
   background: #7d8d4a !important;
   border-radius: 0px 0px 0px 7px;
   width: 33.334%;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.myplant .plant_data div .nickname .nickname::-webkit-scrollbar {
+  display: none;
 }
 
 .myplant .plant_data div .nickname label {
@@ -120,6 +127,14 @@ body {
   background: #7d8d4a !important;
   border-radius: 0px;
   width: 33.334%;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.myplant .plant_data div .species .species::-webkit-scrollbar {
+  display: none;
 }
 
 .myplant .plant_data div .species label {

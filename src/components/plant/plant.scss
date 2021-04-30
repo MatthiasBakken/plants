@@ -51,7 +51,14 @@
 				background: $accent3 !important;
 				border-radius: 0px 0px 0px 7px;
 				width: 33.334%;
-				overflow: scroll;
+				overflow-y: scroll;
+				overflow-x: scroll;
+				-ms-overflow-style: none;
+				scrollbar-width: none;
+
+				.nickname::-webkit-scrollbar {
+					display: none;
+				}
 
 				label {
 					color: $secondary;
@@ -73,6 +80,14 @@
 				background: $accent3 !important;
 				border-radius: 0px;
 				width: 33.334%;
+				overflow-y: scroll;
+				overflow-x: scroll;
+				-ms-overflow-style: none;
+				scrollbar-width: none;
+
+				.species::-webkit-scrollbar {
+					display: none;
+				}
 
 				label {
 					color: $secondary;

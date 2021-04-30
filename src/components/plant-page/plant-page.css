@@ -49,18 +49,30 @@
 }
 
 .plant_data div .name {
-	overflow: scroll;
 	border-radius: 0px 0px 0px 7px;
 	width: 33.334%;
+	overflow-y: scroll;
+	overflow-x: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+.plant_data div .name::-webkit-scrollbar {
+	display: none;
 }
 .plant_data div .name p {
 	line-height: 1em;
 }
 
 .plant_data div .spec {
-	overflow: scroll;
 	border-radius: 0px;
 	width: 33.334%;
+	overflow-y: scroll;
+	overflow-x: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+.plant_data div .spec::-webkit-scrollbar {
+	display: none;
 }
 .plant_data div .spec p {
 	line-height: 1em;
