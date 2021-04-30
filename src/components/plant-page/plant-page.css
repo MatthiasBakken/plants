@@ -113,7 +113,14 @@ body::-webkit-scrollbar-thumb {
 .plant_data div .name {
   border-radius: 0px 0px 0px 7px;
   width: 33.334%;
-  overflow: auto;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.name::-webkit-scrollbar {
+  display: none;
 }
 
 .plant_data div .name p {
@@ -123,7 +130,14 @@ body::-webkit-scrollbar-thumb {
 .plant_data div .spec {
   border-radius: 0px;
   width: 33.334%;
-  overflow: auto;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.spec::-webkit-scrollbar {
+  display: none;
 }
 
 .plant_data div .spec p {
@@ -144,33 +158,5 @@ body::-webkit-scrollbar-thumb {
   font-weight: 900;
   font-size: 0.9rem;
   line-height: 20px;
-}
-
-.spec::-webkit-scrollbar {
-  width: 10px;
-}
-
-.spec::-webkit-scrollbar-track {
-  background: #606c38;
-}
-
-.spec::-webkit-scrollbar-thumb {
-  background-color: #283618;
-  border-radius: 1px;
-  border: 1px solid #606c38;
-}
-
-.name::-webkit-scrollbar {
-  width: 10px;
-}
-
-.name::-webkit-scrollbar-track {
-  background: #606c38;
-}
-
-.name::-webkit-scrollbar-thumb {
-  background-color: #283618;
-  border-radius: 1px;
-  border: 1px solid #606c38;
 }
 /*# sourceMappingURL=plant-page.css.map */

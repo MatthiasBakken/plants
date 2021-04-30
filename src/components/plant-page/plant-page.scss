@@ -1,4 +1,4 @@
-@import '../../main.scss';
+@import "../../main.scss";
 
 .myplant button {
 	cursor: pointer;
@@ -53,7 +53,14 @@
 .plant_data div .name {
 	border-radius: 0px 0px 0px 7px;
 	width: 33.334%;
-	overflow: auto;
+	overflow-y: scroll;
+	overflow-x: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.name::-webkit-scrollbar {
+	display: none;
 }
 // .plant_data div .name::-webkit-scrollbar {
 // 	display: none;
@@ -65,7 +72,14 @@
 .plant_data div .spec {
 	border-radius: 0px;
 	width: 33.334%;
-	overflow: auto;
+	overflow-y: scroll;
+	overflow-x: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.spec::-webkit-scrollbar {
+	display: none;
 }
 // .plant_data div .spec::-webkit-scrollbar {
 // 	display: none;
@@ -87,35 +101,4 @@
 	font-weight: 900;
 	font-size: 0.9rem;
 	line-height: 20px;
-}
-
-
-
-.spec::-webkit-scrollbar {
-  width: 10px;
-}
-
-.spec::-webkit-scrollbar-track {
-  background: $primary;
-}
-
-.spec::-webkit-scrollbar-thumb {
-  background-color: $secondary;
-  border-radius: 1px;
-  border: 1px solid $primary;
-}
-
-
-.name::-webkit-scrollbar {
-  width: 10px;
-}
-
-.name::-webkit-scrollbar-track {
-  background: $primary;
-}
-
-.name::-webkit-scrollbar-thumb {
-  background-color: $secondary;
-  border-radius: 1px;
-  border: 1px solid $primary;
 }
