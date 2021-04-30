@@ -21,20 +21,20 @@ const Menu = () => {
       </label>
       <div id="sidebarMenu">
         <ul className="sidebarMenuInner">
-          <li>Plants <span>Menu Options</span></li>
+          <li className="menu-title">Plants <span>Menu Options</span></li>
           <Link to="/">
-            <li>Home</li>
+            <li className="menu-home">Home</li>
           </Link>
           <Link to="/plants">
-            <li>Plants</li>
+            <li className="menu-plants">Plants</li>
           </Link>
           <Link to="/create-plant">
-            <li>Create Plant</li>
+            <li className="menu-create">Create Plant</li>
           </Link>
           <Link to="/settings">
-            <li>Settings</li>
+            <li className="menu-settings">Settings</li>
           </Link>
-          <li onClick={() => onClickHandler()} >Logout</li>
+          <li onClick={() => onClickHandler()} className="menu-logout" >Logout</li>
         </ul>
       </div>
     </div>
