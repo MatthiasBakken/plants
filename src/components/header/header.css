@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Antonio:wght@100;500&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Varela+Round");
-#root {
-  margin: 0 auto;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +12,30 @@ html,
 body {
   overflow-x: hidden;
   height: 100%;
-  background: #fefae0;
+  background: #fefae0 !important;
+}
+
+h1, h2, h3 {
+  color: #606c38 !important;
+}
+
+body::-webkit-scrollbar {
+  width: 20px;
+  /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #606c38;
+  /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #283618;
+  /* color of the scroll thumb */
+  border-radius: 10px;
+  /* roundness of the scroll thumb */
+  border: 5px solid #606c38;
+  /* creates padding around scroll thumb */
 }
 
 .header {
@@ -60,11 +79,23 @@ body {
   color: #dda15e;
 }
 
+@media (max-width: 700px) {
+  .header .set-icon {
+    right: 60px;
+  }
+}
+
 .header .set {
   position: absolute;
   top: 20px;
   right: 160px;
   color: #7d8d4a;
+}
+
+@media (max-width: 700px) {
+  .header .set {
+    display: none;
+  }
 }
 
 .header .log-icon {
@@ -80,10 +111,22 @@ body {
   cursor: pointer;
 }
 
+@media (max-width: 700px) {
+  .header .log-icon {
+    right: 10px;
+  }
+}
+
 .header .log {
   position: absolute;
   top: 20px;
   right: 25px;
   color: #7d8d4a;
+}
+
+@media (max-width: 700px) {
+  .header .log {
+    display: none;
+  }
 }
 /*# sourceMappingURL=header.css.map */

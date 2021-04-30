@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Antonio:wght@100;500&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Varela+Round");
-#root {
-  margin: 0 auto;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +12,7 @@ html,
 body {
   overflow-x: hidden;
   height: 100%;
-  background: #fefae0;
+  background: #fefae0 !important;
 }
 
 a {

@@ -12,7 +12,30 @@ html,
 body {
   overflow-x: hidden;
   height: 100%;
-  background: #d1d6b9;
+  background: #fefae0 !important;
+}
+
+h1, h2, h3 {
+  color: #606c38 !important;
+}
+
+body::-webkit-scrollbar {
+  width: 20px;
+  /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #606c38;
+  /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #283618;
+  /* color of the scroll thumb */
+  border-radius: 10px;
+  /* roundness of the scroll thumb */
+  border: 5px solid #606c38;
+  /* creates padding around scroll thumb */
 }
 
 .plant_box {
@@ -38,6 +61,7 @@ body {
   padding: 20px 20px 0px 20px;
   background: #d1d6b9;
   border-radius: 7px;
+  height: 501px;
 }
 
 .myplant .plant_img img {
@@ -52,6 +76,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   width: 430px;
+  height: 77px;
 }
 
 .myplant .plant_data div {

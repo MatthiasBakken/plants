@@ -20,5 +20,23 @@ html,
 body {
 	overflow-x: hidden;
 	height: 100%;
-  background: $bg2;
+  background: $bg !important;
+}
+
+h1, h2, h3 {
+  color: $primary !important;
+}
+
+body::-webkit-scrollbar {
+  width: 20px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: $primary;        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $secondary;    /* color of the scroll thumb */
+  border-radius: 10px;       /* roundness of the scroll thumb */
+  border: 5px solid $primary;  /* creates padding around scroll thumb */
 }
