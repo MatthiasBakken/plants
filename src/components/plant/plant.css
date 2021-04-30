@@ -48,6 +48,9 @@ body {
 }
 
 .myplant .plant_data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   width: 430px;
 }
 
@@ -62,6 +65,7 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  width: 100%;
 }
 
 .myplant .plant_data div span {
@@ -78,62 +82,77 @@ body {
 }
 
 .myplant .plant_data div .nickname {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 10px !important;
   background: #7d8d4a !important;
   border-radius: 0px 0px 0px 7px;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  width: 33.334%;
+  overflow: scroll;
 }
 
 .myplant .plant_data div .nickname label {
   color: #283618;
   font-weight: 900;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .myplant .plant_data div .nickname p {
   color: #283618;
   display: block;
+  line-height: 1em;
 }
 
 .myplant .plant_data div .species {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 10px !important;
   background: #7d8d4a !important;
   border-radius: 0px;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  width: 33.334%;
 }
 
 .myplant .plant_data div .species label {
   color: #283618;
   font-weight: 900;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .myplant .plant_data div .species p {
   color: #283618;
   display: block;
+  line-height: 1em;
 }
 
 .myplant .plant_data div .h2o-frequency {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 33.334%;
   padding: 10px !important;
   background: #7d8d4a !important;
   border-radius: 0px 0px 7px 0px;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
 }
 
 .myplant .plant_data div .h2o-frequency label {
   color: #283618;
   font-weight: 900;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .myplant .plant_data div .h2o-frequency p {
   color: #283618;
   display: block;
+  line-height: 1em;
 }
 /*# sourceMappingURL=plant.css.map */

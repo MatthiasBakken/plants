@@ -28,7 +28,12 @@ const User = (props) => {
                 </div>
               </div>
               :
-              <p>Get started by <Link to="/create-plant">creating a plant</Link></p>
+              <div>
+                <p>Get started by <Link to="/create-plant">creating a plant</Link></p>
+                <div className="plant-img-container">
+                  <img src="https://images.unsplash.com/photo-1520412099551-62b6bafeb5bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="plant picture" />
+                </div>
+              </div>
           }
         </div>
       </div>

@@ -80,7 +80,7 @@ function Login ( props ) {
                             <label>Password: </label>
                             <Field name="password" type="password" />
                             {errors.password && touched.password ? (
-                                <div className="error-div">{errors.email}</div>
+                                <div className="error-div">{errors.password}</div>
                             ) : null}
                             
                                 <button className="login_button" type="submit" disabled={!( dirty && isValid )} >Log me in!</button>

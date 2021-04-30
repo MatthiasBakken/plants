@@ -19,4 +19,29 @@
 #root .App .login-container .form-container div p {
   margin: 5px 0 0 0;
 }
+
+.login_form {
+  border-radius: 15px;
+  background: #d1d6b9;
+}
+
+.login_form .error-div {
+  color: #bc6c25;
+  margin-bottom: 5px;
+}
+
+.login_button {
+  background: #606c38;
+  border-radius: 7px;
+  color: white;
+  cursor: pointer;
+}
+
+.login_button:hover {
+  background: #283618;
+}
+
+.click_here {
+  color: #bc6c25;
+}
 /*# sourceMappingURL=login.css.map */

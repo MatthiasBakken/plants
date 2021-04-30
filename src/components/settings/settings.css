@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Antonio:wght@100;500&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Varela+Round");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Varela Round", sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  height: 100%;
+  background: #d1d6b9;
+}
+
+.settings-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.settings_forms {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  border-radius: 15px;
+}
+
+.update_phone {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 90px;
+}
+
+.update_pass {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 90px;
+}
+
+.settings_forms label {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.settings_forms input {
+  margin-bottom: 10px;
+  width: 80%;
+  font-size: 18px;
+}
+
+.settings_forms div {
+  margin: -5px 0 10px 0;
+  color: #bc6c25;
+  font-size: 1rem;
+}
+
+.settings_forms span button {
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 6px;
+  background: #606c38;
+  cursor: pointer;
+  color: white;
+}
+
+.settings_forms span button:hover {
+  background-color: #283618;
+}
+
+.settings-forms-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 800px;
+  width: 800px;
+  border-radius: 15px;
+}
+
+@media only screen and (max-width: 700px) {
+  .settings-forms-container {
+    width: 480px;
+  }
+}
+/*# sourceMappingURL=settings.css.map */

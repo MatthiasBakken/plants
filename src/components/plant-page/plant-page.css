@@ -34,6 +34,7 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	width: 100%;
 }
 
 .plant_data div span {
@@ -48,20 +49,34 @@
 }
 
 .plant_data div .name {
+	overflow: scroll;
 	border-radius: 0px 0px 0px 7px;
+	width: 33.334%;
+}
+.plant_data div .name p {
+	line-height: 1em;
 }
 
 .plant_data div .spec {
+	overflow: scroll;
 	border-radius: 0px;
+	width: 33.334%;
+}
+.plant_data div .spec p {
+	line-height: 1em;
 }
 
 .plant_data div .h2o {
 	border-radius: 0px 0px 7px 0px;
+	width: 33.334%;
+}
+.plant_data div .h2o p {
+	line-height: 1em;
 }
 
 .plant_data div span label {
 	color: #283618;
 	font-weight: 900;
-	font-size: .9rem;
+	font-size: 0.9rem;
 	line-height: 20px;
 }

@@ -25,12 +25,14 @@
 	}
 
 	.plant_data {
+		display: flex;
 		width: 430px;
 
 		div {
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
+			width: 100%;
 
 			span {
 				display: flex;
@@ -43,59 +45,67 @@
 			}
 
 			.nickname {
+				display: flex;
+				flex-direction: column;
 				padding: 10px !important;
 				background: $accent3 !important;
 				border-radius: 0px 0px 0px 7px;
-				flex-grow: 1;
+				width: 33.334%;
+				overflow: scroll;
 
 				label {
 					color: $secondary;
 					font-weight: 900;
-					font-size: .9rem;
+					font-size: 0.9rem;
 				}
 
 				p {
 					color: $secondary;
 					display: block;
+					line-height: 1em;
 				}
 			}
 
 			.species {
+				display: flex;
+				flex-direction: column;
 				padding: 10px !important;
 				background: $accent3 !important;
 				border-radius: 0px;
-				flex-grow: 1;
+				width: 33.334%;
 
 				label {
 					color: $secondary;
 					font-weight: 900;
-					font-size: .9rem;
+					font-size: 0.9rem;
 				}
 
 				p {
 					color: $secondary;
 					display: block;
+					line-height: 1em;
 				}
 			}
 
 			.h2o-frequency {
+				display: flex;
+				width: 33.334%;
 				padding: 10px !important;
 				background: $accent3 !important;
 				border-radius: 0px 0px 7px 0px;
-				flex-grow: 1;
 
 				label {
 					color: $secondary;
 					font-weight: 900;
-					font-size: .9rem;
+					font-size: 0.9rem;
 				}
 
 				p {
 					color: $secondary;
 					display: block;
+					line-height: 1em;
 				}
 			}
-			
 		}
 	}
 }

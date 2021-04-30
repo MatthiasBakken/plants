@@ -78,7 +78,7 @@ const Signup = ( props ) => {
             <label>Password: </label>
             <Field name="password" type="password" />
             {errors.password && touched.password ? (
-              <div className="error-div">{errors.email}</div>
+              <div className="error-div">{errors.password}</div>
             ) : null}
             <span className="button-container">
               <button className="signup_button" type="submit" disabled={!( dirty && isValid )} >Sign Me Up!</button>
