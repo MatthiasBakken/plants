@@ -56,15 +56,15 @@ const PlantPage = (props) => {
           </div>
           <div className="plant_data">
             <div>
-              <span className="nickname">
+              <span className="name">
                 <label>Nickname: </label>
                 <p>{`${plant.nickname}`}</p>
               </span>
-              <span className="species">
+              <span className="spec">
                 <label>Species: </label>
                 <p>{`${plant.species}`}</p>
               </span>
-              <span className="h2o-frequency">
+              <span className="h2o">
                 <label>H2o Frequency: </label>
                 <p>{`${plant.h2o_frequency}`}</p>
               </span>

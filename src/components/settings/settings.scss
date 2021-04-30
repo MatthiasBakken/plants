@@ -1,0 +1,80 @@
+@import "../../main.scss";
+
+.settings-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
+	align-items: center;
+	// width: 70vw;
+	// height: 70vh;
+}
+
+.settings_forms {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	// margin-top: 60px;
+	width: 80%;
+	border-radius: 15px;
+	// height: 30%;
+}
+
+.update_phone {
+	text-align: center;
+	font-size: 2rem;
+	line-height: 90px;
+}
+
+.update_pass {
+	text-align: center;
+	font-size: 2rem;
+	line-height: 90px;
+}
+
+
+.settings_forms label {
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.settings_forms input {
+	margin-bottom: 10px;
+	width: 80%;
+	font-size: 18px;
+}
+
+.settings_forms div {
+	margin: -10px 0 10px 0;
+	color: $accent2;
+	font-size: 1rem;
+}
+.settings_forms span button {
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 6px;
+	background: $primary;
+	cursor: pointer;
+	color: white;
+}
+.settings_forms span button:hover {
+	background-color: $secondary;
+}
+.settings-forms-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 800px;
+	width: 800px;
+	// height: 80%;
+	// margin-top: 30px;
+	border-radius: 15px;
+	// background: $bg2;
+}
+@media only screen and (max-width: 700px) {
+	.settings-forms-container {
+		width: 480px;
+	}
+}

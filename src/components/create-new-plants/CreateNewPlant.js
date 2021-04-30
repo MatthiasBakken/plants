@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import axios from 'axios';
 
-import "./CreateNewPlant.css"
+import "./CreateNewPlant.scss"
 
 
 const initialPlant = {
@@ -59,7 +59,7 @@ const CreatePlantForm = (props) => {
         return (
             <div>
             
-                <form onSubmit={handleSubmit}>
+                <form className="add_plant_form" onSubmit={handleSubmit}>
                     <h2>Add a New Plant</h2>
                     <input
                         type="text"
@@ -78,7 +78,7 @@ const CreatePlantForm = (props) => {
                     <input
                         type="number"
                         name="h2o_frequency"
-                        placeholder="H2oFrecuency"
+                        placeholder="H2oFrequency"
                         onChange={changeHandler}
                         value={plant.h2o_frequency}
                     />
@@ -91,7 +91,7 @@ const CreatePlantForm = (props) => {
                         value={plant.image}
                     />
                 
-                    <button disabled={!(plant.nickname && plant.species && plant.h2o_frequency)}>Add Plant</button>
+                    <button className="add_plant_button" disabled={!(plant.nickname && plant.species && plant.h2o_frequency)}>Add Plant</button>
             
                 </form>
             </div>

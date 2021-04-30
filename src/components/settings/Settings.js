@@ -4,7 +4,7 @@ import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-import './settings.css';
+import './settings.scss';
 
 
 const phoneNumberRegex = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
@@ -55,8 +55,8 @@ const Settings = (props) => {
             }}
           >
             {( { errors, touched, isValid, dirty, values } ) => (
-              <Form className="forms">
-                <label>Update Password: </label>
+              <Form className="settings_forms">
+                <label className="update_pass">Update Password</label>
                 <Field name="password" placeholder="abcD1234?" />
                 {errors.password && touched.password ? (
                   <div>{errors.password}</div>
@@ -91,8 +91,8 @@ const Settings = (props) => {
             }}
           >
             {( { errors, touched, isValid, dirty, values } ) => (
-              <Form className="forms">
-                <label>Update Phone Number: </label>
+              <Form className="settings_forms">
+                <label className="update_phone">Update Phone Number</label>
                 <Field name="phoneNumber" placeholder="555-123-4567" />
                 {errors.phoneNumber && touched.phoneNumber ? (
                   <div>{errors.phoneNumber}</div>

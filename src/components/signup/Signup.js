@@ -4,7 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-import './styles.scss'
+import './signup.scss'
 
 
 const phoneNumberRegex = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
@@ -64,7 +64,7 @@ const Signup = ( props ) => {
         }}
       >
         {( { errors, touched, isValid, dirty } ) => (
-          <Form className="form">
+          <Form className="signup_form">
             <label >Username: </label>
             <Field name="username" />
             {errors.username && touched.username ? (
@@ -81,7 +81,7 @@ const Signup = ( props ) => {
               <div className="error-div">{errors.email}</div>
             ) : null}
             <span className="button-container">
-              <button type="submit" disabled={!( dirty && isValid )} >Sign Me Up!</button>
+              <button className="signup_button" type="submit" disabled={!( dirty && isValid )} >Sign Me Up!</button>
             </span>
           </Form>
         )}

@@ -1,3 +1,5 @@
+@import "../../main.scss";
+
 form {
   font-family: 'Source Sans Pro', Helvetica, sans-serif;
   display: flex;
@@ -7,8 +9,9 @@ form {
   width: 30em;
   height: 25em;
   margin: auto;
-  box-shadow: 2px 2px 2px 2px lightgray;
+  // box-shadow: 2px 2px 2px 2px $primary;
   margin-top: 10%;
+  background: $bg2;
 }
 h2 {
   font-size: 35px;
@@ -17,7 +20,7 @@ h2 {
 
 input {
   font-size: 25px;
-  color: black;
+  color: $primary;
   margin: 0.2em;
   width: 15em;
 }
@@ -27,7 +30,22 @@ button {
   font-size: 1.5em;
   margin-top: 1em;
   margin-bottom: 1em;
-  background-color: #43d9b8;
-  color: black;
-  border: white;
+  // background-color: #43d9b8;
+  // color: black;
+  border: 0px;
+}
+
+.add_plant_button {
+  border-radius: 7px;
+  background: $primary;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background: $secondary;
+  }
+}
+
+.add_plant_form {
+  border-radius: 15px;
 }

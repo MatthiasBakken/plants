@@ -71,7 +71,7 @@ function Login ( props ) {
                     }}
                 >
                     {( { errors, touched, isValid, dirty } ) => (
-                        <Form className="form">
+                        <Form className="login_form">
                             <label >Username: </label>
                             <Field name="username" />
                             {errors.username && touched.username ? (
@@ -83,13 +83,13 @@ function Login ( props ) {
                                 <div className="error-div">{errors.email}</div>
                             ) : null}
                             
-                                <button type="submit" disabled={!( dirty && isValid )} >Log me in!</button>
+                                <button className="login_button" type="submit" disabled={!( dirty && isValid )} >Log me in!</button>
                             
                         </Form>
                     )}
                 </Formik>
                 <div>
-                    <p>Don't have an account? <Link to="/signup">Click Here</Link></p>
+                    <p>Don't have an account? <Link to="/signup"><span className="click_here">Click Here</span></Link></p>
                 </div>
             </div>
         </div>

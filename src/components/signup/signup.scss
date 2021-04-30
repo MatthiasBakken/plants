@@ -1,0 +1,16 @@
+@import "../../main.scss";
+
+.signup_form {
+  border-radius: 15px;
+}
+
+.signup_button {
+  background: $primary;
+  border-radius: 7px;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background: $secondary;
+  }
+}
