@@ -1,11 +1,13 @@
 // write tests here
-describe( 'WATER MY PLANTS', () => {
+import faker from 'faker';
+
+describe( 'WATER MY PLANTS: LOGIN PAGE', () => {
   beforeEach( () => {
     cy.visit( 'http://localhost:3000/login' );
     localStorage.clear();
-  } )
+  } );
   
-  it ( 'sanity checks', () => {
+  it( 'sanity checks', () => {
     expect( 10 ).to.equal( 10 );
     expect( 1 + 2 ).to.equal( 3 );
     expect( {} ).to.eql( {} );
@@ -64,7 +66,7 @@ describe( 'WATER MY PLANTS', () => {
       .should( 'exist' );
     headerLogoutLink()
       .should( 'not.exist' );
-  } )
+  } );
   
 
   /********* MENU-LOGGED-OUT *** MENU-LOGGED-OUT *** MENU-LOGGED-OUT *********/
@@ -140,7 +142,7 @@ describe( 'WATER MY PLANTS', () => {
       .should( 'exist' );
     menuLinkLogout()
       .should( 'exist' );
-  })
+  } );
 
 
   /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
@@ -153,6 +155,7 @@ describe( 'WATER MY PLANTS', () => {
   const loginPasswordLabel = () => cy.get( 'label' ).contains( `Password: ` );
   const loginCreateAccountDiv = () => cy.get( `div[class="create-account-link-container"]` );
   const loginCreateAccountPar = () => cy.get( `p[class="create-account-link"]` );
+  const loginCreateAccountSpan = () => cy.get( `span[class="click_here"]` );
   const loginErrorDivs = () => cy.get( `div[class="error-div"]` );
 
   // Login: inputs
@@ -180,6 +183,8 @@ describe( 'WATER MY PLANTS', () => {
       .should( 'exist' );
     loginErrorDivs()
       .should( 'not.exist' );
+    loginCreateAccountSpan()
+      .should( 'exist' );
   } );
 
   it( 'LOGIN: all inputs, buttons and links do/dont exist', () => {
@@ -193,8 +198,107 @@ describe( 'WATER MY PLANTS', () => {
       .should( 'be.disabled' );
     loginCreateAccountLink()
       .should( 'exist' );
+  } );
+} );
+
+describe( 'WATER MY PLANTS: CREATE ACCOUNT', () => {
+  beforeEach( () => {
+    localStorage.clear();
+
+    cy.visit( 'http://localhost:3000/login' );
+
+    const loginCreateAccountSpan = () => cy.get( `span[class="click_here"]` );
+    loginCreateAccountSpan().click();
+  } );
+
+  /********* CREATE-ACCOUNT *** CREATE-ACCOUNT *** CREATE-ACCOUNT *********/
+  
+  // Create: Benign elements
+  const createContainerDiv = () => cy.get( `div[class="create-container"]` );
+  const createFormContDiv = () => cy.get( `div[class="form-container"]` );
+  const createSignupForm = () => cy.get( `form[class="signup_form"]` );
+  const createUsernameLabel = () => cy.get( `label` ).contains( 'Username: ' );
+  const createPhoneNumberLabel = () => cy.get( `label` ).contains( 'Phone Number: ' );
+  const createPasswordLabel = () => cy.get( `label` ).contains( 'Password: ' );
+  const createButtonContSpan = () => cy.get( `span[class="button-container"]` );
+
+  // Create: Inputs
+  const createUsernameInput = () => cy.get( `input[name="username"]` );
+  const createPhoneNumberInput = () => cy.get( `input[name="phoneNumber"]` );
+  const createPasswordInput = () => cy.get( `input[name="password"]` );
+
+  // Create: Buttons/Links
+  const createSignupButton = () => cy.get( `button[class="signup_button"]` );
+
+  it( `CREATE: all benign elements do/dont exist`, () => {
+    createContainerDiv()
+      .should( 'not.exist' );
+    createFormContDiv()
+      .should( 'exist' );
+    createSignupForm()
+      .should( 'exist' );
+    createUsernameLabel()
+      .should( 'exist' );
+    createPhoneNumberLabel()
+      .should( 'exist' );
+    createPasswordLabel()
+      .should( 'exist' );
+    createButtonContSpan()
+      .should( 'exist' );
+  } );
+
+  it( `CREATE: all inputs, buttons and links do/dont exist`, () => {
+    createUsernameInput()
+      .should( 'exist' );
+    createPhoneNumberInput()
+      .should( 'exist' );
+    createPasswordInput()
+      .should( 'exist' );
+    createSignupButton()
+      .should( 'exist' );
   })
 
+  it( `CREATE: create a new user account`, () => {
+    createUsernameInput()
+      .type( `${faker.name.findName()}`, { delay: 50 } );
+    createPhoneNumberInput()
+      .type( `${faker.phone.phoneNumber('###-###-####')}`, { delay: 50 } );
+    createPasswordInput()
+      .type( `${faker.hacker.adjective()}${faker.hacker.noun()}`, { delay: 50 } );
+    createSignupButton()
+      .click();
+  })
+
+} );
+// describe( 'WATER MY PLANTS LOGGED IN', () => {
+//   beforeEach( () => {
+//     localStorage.clear()
+
+//     cy.visit( 'http://localhost:3000/login' );
+
+//     const loginUsernameInput = () => cy.get( `input[name="username"]` );
+//     const loginPasswordInput = () => cy.get( `input[name="password"]` );
+//     const loginSubmitButton = () => cy.get( `button[class="login_button"]` );
+
+//     loginUsernameInput().type( 'lksdfjssdesfs', { delay: 50 } );
+//     loginPasswordInput().type( 'sldfk244dswE', { delay: 50 } );
+
+//     loginSubmitButton().click();
+//   } );
+  
+//   it( 'sanity checks', () => {
+//     expect( 10 ).to.equal( 10 );
+//     expect( 1 + 2 ).to.equal( 3 );
+//     expect( {} ).to.eql( {} );
+//     expect( 1 + 2 ).to.equal( 4 - 1 );
+//   } );
+
+//     /********* HOME *** HOME *** HOME *** HOME *** HOME *** HOME *********/
+// } );
+
+
+
+
 
   /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
   /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
@@ -204,6 +308,3 @@ describe( 'WATER MY PLANTS', () => {
   /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
   /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
   /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
-  /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
-  /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
-} );
