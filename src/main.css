@@ -1,40 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Antonio:wght@100;500&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Varela+Round");
 * {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-family: "Varela Round", sans-serif;
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	font-family: "Varela Round", sans-serif;
 }
 
 html,
 body {
-  overflow-x: hidden;
-  height: 100%;
-  background: #fefae0 !important;
+	overflow-x: hidden;
+	height: 100%;
+	background: #fefae0 !important;
 }
 
-h1, h2, h3 {
-  color: #606c38 !important;
-}
-
-body::-webkit-scrollbar {
-  width: 20px;
-  /* width of the entire scrollbar */
-}
-
-body::-webkit-scrollbar-track {
-  background: #606c38;
-  /* color of the tracking area */
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: #283618;
-  /* color of the scroll thumb */
-  border-radius: 10px;
-  /* roundness of the scroll thumb */
-  border: 5px solid #606c38;
-  /* creates padding around scroll thumb */
+h1,
+h2,
+h3 {
+	color: #606c38 !important;
 }
 /*# sourceMappingURL=main.css.map */

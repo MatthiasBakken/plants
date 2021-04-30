@@ -8,7 +8,7 @@ import './header.scss';
 const Header = ( props ) => {
   
   let propsTitle = props.propsTitle;
-  const [ title, setTitle ] = useState( "Water My Plants" );
+  const [ title, setTitle ] = useState( "" );
 
   useEffect( () => {
     setTitle( propsTitle );

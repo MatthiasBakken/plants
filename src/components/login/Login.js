@@ -88,8 +88,8 @@ function Login ( props ) {
                         </Form>
                     )}
                 </Formik>
-                <div>
-                    <p>Don't have an account? <Link to="/signup"><span className="click_here">Click Here</span></Link></p>
+                <div className="create-account-link-container">
+                    <p className="create-account-link">Don't have an account? <Link to="/signup"><span className="click_here">Click Here</span></Link></p>
                 </div>
             </div>
         </div>
