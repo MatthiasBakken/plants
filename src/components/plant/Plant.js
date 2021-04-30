@@ -36,15 +36,15 @@ const Plant = (props) => {
         <div className="plant_data">
           <div>
             <span className="nickname">
-              <label>Nickname: </label>
+              <label>Nickname: </label><br/>
               <p>{`${props.plantData.nickname}`}</p>
             </span>
             <span className="species">
-              <label>Species: </label>
+              <label>Species: </label><br/>
               <p>{`${props.plantData.species}`}</p>
             </span>
             <span className="h2o-frequency">
-              <label>H2o Frequency: </label>
+              <label>H2o Frequency: </label><br/>
               <p>{`${props.plantData.h2o_frequency}`}</p>
             </span>
           </div>
