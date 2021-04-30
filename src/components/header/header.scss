@@ -30,6 +30,10 @@
 		&:hover {
 			color: $accent1;
 		}
+
+		@media (max-width: 700px) {
+			right: 60px;
+			}
 	}
 
 	.set {
@@ -37,6 +41,10 @@
 		top: 20px;
 		right: 160px;
 		color: $accent3;
+
+		@media (max-width: 700px) {
+			display: none;
+			}
 	}
 
 	.log-icon {
@@ -50,6 +58,11 @@
 			color: $accent1;
 			cursor: pointer;
 		}
+
+		@media (max-width: 700px) {
+			right: 10px;
+			}
+
 	}
 
 	.log {
@@ -57,5 +70,9 @@
 		top: 20px;
 		right: 25px;
 		color: $accent3;
+
+		@media (max-width: 700px) {
+			display: none;
+			}
 	}
 }

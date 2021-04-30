@@ -1,94 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Antonio:wght@100;500&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Varela+Round");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Varela Round", sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  height: 100%;
+  background: #fefae0 !important;
+}
+
+h1, h2, h3 {
+  color: #606c38 !important;
+}
+
+body::-webkit-scrollbar {
+  width: 20px;
+  /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #606c38;
+  /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #283618;
+  /* color of the scroll thumb */
+  border-radius: 10px;
+  /* roundness of the scroll thumb */
+  border: 5px solid #606c38;
+  /* creates padding around scroll thumb */
+}
+
 .myplant button {
-	cursor: pointer;
-	margin: 20px 0;
-	width: 215px;
-	background-color: #606c38;
-	color: white;
+  cursor: pointer;
+  margin: 20px 0;
+  width: 215px;
+  background-color: #606c38;
+  color: white;
 }
 
 .myplant button:nth-child(1) {
-	border-radius: 7px 0px 0px 7px;
+  border-radius: 7px 0px 0px 7px;
 }
 
 .myplant button:nth-child(2) {
-	border-radius: 0px 7px 7px 0px;
+  border-radius: 0px 7px 7px 0px;
 }
 
 .myplant button:hover {
-	background-color: #283618;
-	color: white;
+  background-color: #283618;
+  color: white;
 }
 
 .plant-page-container {
-	display: flex;
-	width: 100vw;
-	justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .edit_delete_buttons {
-	display: flex;
-	justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .plant_data div {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
 }
 
 .plant_data div span {
-	display: flex;
-	flex-direction: column;
-	line-height: 10px !important;
-	margin-top: -5px;
-	padding: 5px;
-	flex-grow: 1;
-	padding: 10px !important;
-	background: #7d8d4a !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  line-height: 10px !important;
+  margin-top: -5px;
+  padding: 5px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 10px !important;
+  background: #7d8d4a !important;
 }
 
 .plant_data div .name {
-	border-radius: 0px 0px 0px 7px;
-	width: 33.334%;
-	overflow-y: scroll;
-	overflow-x: scroll;
-	-ms-overflow-style: none;
-	scrollbar-width: none;
+  border-radius: 0px 0px 0px 7px;
+  width: 33.334%;
+  overflow: auto;
 }
-.plant_data div .name::-webkit-scrollbar {
-	display: none;
-}
+
 .plant_data div .name p {
-	line-height: 1em;
+  line-height: 1em;
 }
 
 .plant_data div .spec {
-	border-radius: 0px;
-	width: 33.334%;
-	overflow-y: scroll;
-	overflow-x: scroll;
-	-ms-overflow-style: none;
-	scrollbar-width: none;
+  border-radius: 0px;
+  width: 33.334%;
+  overflow: auto;
 }
-.plant_data div .spec::-webkit-scrollbar {
-	display: none;
-}
+
 .plant_data div .spec p {
-	line-height: 1em;
+  line-height: 1em;
 }
 
 .plant_data div .h2o {
-	border-radius: 0px 0px 7px 0px;
-	width: 33.334%;
+  border-radius: 0px 0px 7px 0px;
+  width: 33.334%;
 }
+
 .plant_data div .h2o p {
-	line-height: 1em;
+  line-height: 1em;
 }
 
 .plant_data div span label {
-	color: #283618;
-	font-weight: 900;
-	font-size: 0.9rem;
-	line-height: 20px;
+  color: #283618;
+  font-weight: 900;
+  font-size: 0.9rem;
+  line-height: 20px;
 }
+
+.spec::-webkit-scrollbar {
+  width: 10px;
+}
+
+.spec::-webkit-scrollbar-track {
+  background: #606c38;
+}
+
+.spec::-webkit-scrollbar-thumb {
+  background-color: #283618;
+  border-radius: 1px;
+  border: 1px solid #606c38;
+}
+
+.name::-webkit-scrollbar {
+  width: 10px;
+}
+
+.name::-webkit-scrollbar-track {
+  background: #606c38;
+}
+
+.name::-webkit-scrollbar-thumb {
+  background-color: #283618;
+  border-radius: 1px;
+  border: 1px solid #606c38;
+}
+/*# sourceMappingURL=plant-page.css.map */

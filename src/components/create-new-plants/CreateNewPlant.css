@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Antonio:wght@100;500&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Varela+Round");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Varela Round", sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  height: 100%;
+  background: #fefae0 !important;
+}
+
+form {
+  font-family: 'Source Sans Pro', Helvetica, sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 30em;
+  height: 25em;
+  margin: auto;
+  margin-top: 10%;
+  background: #d1d6b9;
+}
+
+h2 {
+  font-size: 35px;
+  padding-bottom: 0.8em;
+}
+
+input {
+  font-size: 25px;
+  color: #606c38;
+  margin: 0.2em;
+  width: 15em;
+}
+
+button {
+  padding: 15px;
+  font-size: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border: 0px;
+}
+
+.add_plant_button {
+  border-radius: 7px;
+  background: #606c38;
+  color: white;
+  cursor: pointer;
+}
+
+.add_plant_button:hover {
+  background: #283618;
+}
+
+.add_plant_form {
+  border-radius: 15px;
+}
+/*# sourceMappingURL=CreateNewPlant.css.map */

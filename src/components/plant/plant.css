@@ -12,7 +12,30 @@ html,
 body {
   overflow-x: hidden;
   height: 100%;
-  background: #d1d6b9;
+  background: #fefae0 !important;
+}
+
+h1, h2, h3 {
+  color: #606c38 !important;
+}
+
+body::-webkit-scrollbar {
+  width: 20px;
+  /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #606c38;
+  /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #283618;
+  /* color of the scroll thumb */
+  border-radius: 10px;
+  /* roundness of the scroll thumb */
+  border: 5px solid #606c38;
+  /* creates padding around scroll thumb */
 }
 
 .plant_box {
@@ -38,6 +61,7 @@ body {
   padding: 20px 20px 0px 20px;
   background: #d1d6b9;
   border-radius: 7px;
+  height: 501px;
 }
 
 .myplant .plant_img img {
@@ -52,6 +76,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   width: 430px;
+  height: 77px;
 }
 
 .myplant .plant_data div {
@@ -93,10 +118,7 @@ body {
   background: #7d8d4a !important;
   border-radius: 0px 0px 0px 7px;
   width: 33.334%;
-  overflow-y: scroll;
-  overflow-x: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  overflow: auto;
 }
 
 .myplant .plant_data div .nickname .nickname::-webkit-scrollbar {
@@ -127,14 +149,7 @@ body {
   background: #7d8d4a !important;
   border-radius: 0px;
   width: 33.334%;
-  overflow-y: scroll;
-  overflow-x: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.myplant .plant_data div .species .species::-webkit-scrollbar {
-  display: none;
+  overflow: auto;
 }
 
 .myplant .plant_data div .species label {
@@ -169,5 +184,34 @@ body {
   color: #283618;
   display: block;
   line-height: 1em;
+}
+
+.species::-webkit-scrollbar {
+  width: 10px;
+}
+
+.species::-webkit-scrollbar-track {
+  background: #606c38;
+}
+
+.species::-webkit-scrollbar-thumb {
+  background-color: #283618;
+  border-radius: 1px;
+  border: 1px solid #606c38;
+}
+
+.s
+.nickname::-webkit-scrollbar {
+  width: 10px;
+}
+
+.nickname::-webkit-scrollbar-track {
+  background: #606c38;
+}
+
+.nickname::-webkit-scrollbar-thumb {
+  background-color: #283618;
+  border-radius: 1px;
+  border: 1px solid #606c38;
 }
 /*# sourceMappingURL=plant.css.map */

@@ -1,0 +1,17 @@
+@import "../../main.scss";
+
+.edit-plant-container button {
+	cursor: pointer;
+	margin: 20px;
+	border-radius: 7px;
+	background-color: #606c38;
+	color: white;
+}
+.edit-plant-container button:hover {
+	background-color: rgb(43, 75, 11);
+	color: white;
+}
+
+.edit-plant-container form {
+	border-radius: 15px !important;
+}
