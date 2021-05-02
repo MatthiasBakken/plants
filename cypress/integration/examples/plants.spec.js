@@ -806,10 +806,35 @@ describe( `WATER MY PLANTS: PLANT-PAGE`, () => {
       .contains( 'Delete' );
   } );
 
-  it( `PLANT-PAGE: Clicks edit and routes to edit plant page`, () => {
-    plantEditButton()
+  it( `PLANTS: logout, login, route to plants and click plant`, () => {
+    localStorage.clear();
+    cy.visit( 'http://localhost:3000/login' );
+    const loginUsernameInput = () => cy.get( `input[name="username"]` );
+    loginUsernameInput()
+      .type( `lksdfjssdesfs`, { delay: 50 } );
+    const loginPasswordInput = () => cy.get( `input[name="password"]` );
+    loginPasswordInput()
+      .type( `sldfk244dswE`, { delay: 50 } );
+    const loginSubmitButton = () => cy.get( `button[class="login_button"]` );
+    loginSubmitButton()
+      .click();
+    cy.wait( 2000 );
+    const menuOpenIconLabel = () => cy.get( `label[class="sidebarIconToggle"]` );
+    const menuLinkPlants = () => cy.get( `a[href="/plants"]` );
+    cy.wait( 2000 );
+    menuOpenIconLabel()
+      .click();
+    cy.wait( 1000 );
+    menuLinkPlants()
       .click();
     cy.wait( 3000 );
+    const plantImageImg = () => cy.get( `img[testid="plant-img"]` );
+    plantImageImg()
+      .first()
+      .click();
+    cy.wait( 2000 );
+    plantEditButton()
+      .click();
   } );
 } );
 
@@ -818,6 +843,7 @@ describe( `WATER MY PLANTS: PLANT-PAGE`, () => {
 
 describe( `WATER MY PLANTS: EDIT-PLANT`, () => {
   beforeEach( () => {
+    cy.wait( 3000 );
   } );
 
   // EDIT-PLANT: Benign elements
@@ -844,9 +870,15 @@ describe( `WATER MY PLANTS: EDIT-PLANT`, () => {
     editPlantTitleH2()
       .contains( 'Edit Your Plant' );
     editNicknameInput()
+      .clear();
+    editNicknameInput()
       .type( `${faker.hacker.adjective()} ${faker.hacker.noun()}`, { delay: 50 } );
     editSpeciesInput()
+      .clear();
+    editSpeciesInput()
       .type( `${faker.lorem.word()} ${faker.lorem.word()}`, { delay: 50 } );
+    editH2oInput()
+      .clear();
     editH2oInput()
       .type( 2, { delay: 50 } );
     editImageImg()
