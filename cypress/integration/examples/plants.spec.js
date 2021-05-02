@@ -1,13 +1,17 @@
 // write tests here
 import faker from 'faker';
 
+const createName = `${faker.name.firstName()}`;
+const createNumber = `${faker.phone.phoneNumber( '###-###-####' )}`;
+const createPassword = (`${faker.hacker.adjective()}${faker.hacker.noun()}`).replace(/\s+/g, "-");
+
 describe( 'WATER MY PLANTS: LOGIN PAGE', () => {
   beforeEach( () => {
-    cy.visit( 'http://localhost:3000/login' );
-    localStorage.clear();
   } );
   
   it( 'sanity checks', () => {
+    cy.visit( 'http://localhost:3000/login' );
+    localStorage.clear();
     expect( 10 ).to.equal( 10 );
     expect( 1 + 2 ).to.equal( 3 );
     expect( {} ).to.eql( {} );
@@ -203,8 +207,6 @@ describe( 'WATER MY PLANTS: LOGIN PAGE', () => {
 
 describe( 'WATER MY PLANTS: CREATE ACCOUNT', () => {
   beforeEach( () => {
-    localStorage.clear();
-
     cy.visit( 'http://localhost:3000/login' );
 
     const loginCreateAccountSpan = () => cy.get( `span[class="click_here"]` );
@@ -260,50 +262,449 @@ describe( 'WATER MY PLANTS: CREATE ACCOUNT', () => {
 
   it( `CREATE: create a new user account`, () => {
     createUsernameInput()
-      .type( `${faker.name.findName()}`, { delay: 50 } );
+      .type( `${createName}`, { delay: 50 } );
     createPhoneNumberInput()
-      .type( `${faker.phone.phoneNumber('###-###-####')}`, { delay: 50 } );
+      .type( `${createNumber}`, { delay: 50 } );
     createPasswordInput()
-      .type( `${faker.hacker.adjective()}${faker.hacker.noun()}`, { delay: 50 } );
+      .type( `${createPassword}`, { delay: 50 } );
     createSignupButton()
       .click();
+    cy.wait( 9000 );
+  } );
+} );
+
+
+/********* CREATE-ACCOUNT-HOME *** CREATE-ACCOUNT-HOME *** CREATE-ACCOUNT-HOME *** CREATE-ACCOUNT-HOME *********/
+
+describe( 'WATER MY PLANTS: ACCOUNT CREATED - HOME', () => {
+  beforeEach( () => {
+  } );
+
+  // HOME: Benign elements
+  const homePageContainerDiv = () => cy.get( `div[class="container"]` );
+  const homePageTitleH1 = () => cy.get( `h1[testid="home-title"]` );
+  const homeContentContainerDiv = () => cy.get( `div[testid="home-container"]` );
+  const homeLoginWithMessageDiv = () => cy.get( `div[testid="login-with-message"]` );
+  const homeLoginWithoutMsgDiv = () => cy.get( `div[testid="login-without-message"]` );
+  const homeLoginMessagePar = () => cy.get( `p[testid="login-message"]` );
+  const homeGetStartedMessagePar = () => cy.get( `p[testid="get-started-message"]` );
+  const homeImageContainerDiv = () => cy.get( `div[class="plant-img-container"]` );
+  const homeImageImg = () => cy.get( `img[alt="plant_picture"]` );
+
+  // HOME: Buttons/Links
+  const homeCreatePlantLinkAnchor = () => cy.get( `a[testid="create-plant-link"]` );
+
+  // HOME: Other buttons/links for testing needs
+  const headerLogoutIcon = () => cy.get( `svg[class="log-icon"]` );
+
+  it( `HOME: benign elements do/dont exist`, () => {
+    cy.wait( 4000 );
+    homePageContainerDiv()
+      .should( 'exist' );
+    homePageTitleH1()
+      .should( 'exist' );
+    homePageTitleH1()
+      .contains( "Water My Plants" );
+    homeContentContainerDiv()
+      .should( 'exist' );
+    homeLoginWithMessageDiv()
+      .should( 'not.exist' );
+    homeLoginWithoutMsgDiv()
+      .should( 'exist' );
+    homeLoginMessagePar()
+      .should( 'not.exist' );
+    homeGetStartedMessagePar()
+      .should( 'exist' );
+    homeGetStartedMessagePar()
+      .contains( 'Get started by creating a plant' );
+    homeImageContainerDiv()
+      .should( 'exist' );
+    homeImageImg()
+      .should( 'exist' );
+  } );
+
+  it( `HOME: links do/dont exist`, () => {
+    homeCreatePlantLinkAnchor()
+      .should( 'exist' );
+    homeCreatePlantLinkAnchor()
+      .contains( 'creating a plant' );
+  } );
+
+  it( `HOME: logout`, () => {
+    headerLogoutIcon()
+      .click();
+    cy.wait( 4000 );
+  } );
+} );
+
+
+/********* LOGGING-IN-HOME *** LOGGING-IN-HOME *** LOGGING-IN-HOME *** LOGGING-IN-HOME *********/
+
+describe( 'WATER MY PLANTS: LOGGING IN - HOME', () => {
+  beforeEach( () => {
+  } );
+
+  // HOME: Benign elements
+  const homePageContainerDiv = () => cy.get( `div[class="container"]` );
+  const homePageTitleH1 = () => cy.get( `h1[testid="home-title"]` );
+  const homeContentContainerDiv = () => cy.get( `div[testid="home-container"]` );
+  const homeLoginWithMessageDiv = () => cy.get( `div[testid="login-with-message"]` );
+  const homeLoginWithoutMsgDiv = () => cy.get( `div[testid="login-without-message"]` );
+  const homeLoginMessagePar = () => cy.get( `p[testid="login-message"]` );
+  const homeGetStartedMessagePar = () => cy.get( `p[testid="get-started-message"]` );
+  const homeImageContainerDiv = () => cy.get( `div[class="plant-img-container"]` );
+  const homeImageImg = () => cy.get( `img[alt="plant_picture"]` );
+
+  // HOME: Buttons/Links
+  const homeCreatePlantLinkAnchor = () => cy.get( `a[testid="create-plant-link"]` );
+
+  it( `HOME: logging in`, () => {
+    const loginUsernameInput = () => cy.get( `input[name="username"]` );
+    loginUsernameInput()
+      .type( `${createName}`, { delay: 50 } );
+    const loginPasswordInput = () => cy.get( `input[name="password"]` );
+    loginPasswordInput()
+      .type( `${createPassword}`, { delay: 50 } );
+    const loginSubmitButton = () => cy.get( `button[class="login_button"]` );
+    loginSubmitButton()
+      .click();
+    cy.wait( 7000 );
   })
 
+  it( `HOME: benign elements do/dont exist`, () => {
+    cy.wait( 4000 );
+    homePageContainerDiv()
+      .should( 'exist' );
+    homePageTitleH1()
+      .should( 'exist' );
+    homePageTitleH1()
+      .contains( "Water My Plants" );
+    homeContentContainerDiv()
+      .should( 'exist' );
+    homeLoginWithMessageDiv()
+      .should( 'exist' );
+    homeLoginWithoutMsgDiv()
+      .should( 'not.exist' );
+    homeLoginMessagePar()
+      .should( 'exist' );
+    homeGetStartedMessagePar()
+      .should( 'not.exist' );
+    homeImageContainerDiv()
+      .should( 'exist' );
+    homeImageImg()
+      .should( 'exist' );
+  } );
+
+  it( `HOME: links do/dont exist`, () => {
+    homeCreatePlantLinkAnchor()
+      .should( 'not.exist' );
+  })
+})
+
+
+/********* SETTINGS *** SETTINGS *** SETTINGS *** SETTINGS *** SETTINGS *** SETTINGS *********/
+
+describe( 'WATER MY PLANTS: SETTINGS', () => {
+  beforeEach( () => {
+  } );
+
+  it( `SETTINGS: clicks into settings from HOME`, () => {
+    const settingsIcon = () => cy.get( `svg[class="set-icon"]` );
+    settingsIcon()
+      .click();
+    cy.wait( 3000 );
+  } );
+
+  // SETTINGS: Benign elements
+  const settingsContentContainerDiv = () => cy.get( `div[class="settings-container"]` );
+  const settingsFormsContainerDiv = () => cy.get( `div[class="settings-forms-container"]` );
+  const settingsFormsForm1 = () => cy.get( `form[testid="form1"]` );
+  const settingsFormsForm2 = () => cy.get( `form[testid="form2"]` );
+  const settingsPasswordLabel = () => cy.get( `label[class="update_pass"]` );
+  const settingsPhoneNumberLabel = () => cy.get( `label[class="update_phone"]` );
+  const settingsPasswordErrorDiv = () => cy.get( `div[testid="error-div-password"]` );
+  const settingsPhoneNumErrorDiv = () => cy.get( `div[testid="error-div-phoneNumber"]` );
+  const settingsPasswordSpan = () => cy.get( `span[testid="settings-password-span"]` );
+  const settingsPhoneNumSpan = () => cy.get( `span[testid="settings-phoneNumber-span"]` );
+
+  // SETTINGS: Inputs
+  const settingsPasswordInput = () => cy.get( `input[name="password"]` );
+  const settingsPhoneNumberInput = () => cy.get( `input[name="phoneNumber"]` );
+
+  // SETTINGS: Buttons/Links
+  const settingsPassSubBtn = () => cy.get( `button[testid="settings-password-submit"]` );
+  const settingsPhnNumSubBtn = () => cy.get( `button[testid="settings-phoneNumber-submit"]` );
+
+  it( `SETTINGS: benign elements do/dont exist`, () => {
+    settingsContentContainerDiv()
+      .should( 'exist' );
+    settingsFormsContainerDiv()
+      .should( 'exist' );
+    settingsFormsForm1()
+      .should( 'exist' );
+    settingsFormsForm2()
+      .should( 'exist' );
+    settingsPasswordLabel()
+      .should( 'exist' );
+    settingsPasswordLabel()
+      .contains( 'Update Password' );
+    settingsPhoneNumberLabel()
+      .should( 'exist' );
+    settingsPhoneNumberLabel()
+      .contains( 'Update Phone Number' );
+    settingsPasswordErrorDiv()
+      .should( 'not.exist' );
+    settingsPasswordInput()
+      .focus()
+      .blur();
+    settingsPasswordErrorDiv()
+      .should( 'exist' );
+    settingsPasswordErrorDiv()
+      .contains( 'Some value is required to update your password' );
+    settingsPhoneNumErrorDiv()
+      .should( 'not.exist' );
+    settingsPhoneNumberInput()
+      .focus()
+      .blur();
+    settingsPhoneNumErrorDiv()
+      .contains( 'Must enter a valid number if you plan to update' );
+    settingsPasswordSpan()
+      .should( 'exist' );
+    settingsPhoneNumSpan()
+      .should( 'exist' );
+  } );
+
+  it( `SETTINGS: inputs and buttons/links do/dont exist`, () => {
+    settingsPasswordInput()
+      .should( 'exist' );
+    settingsPhoneNumberInput()
+      .should( 'exist' );
+    settingsPassSubBtn()
+      .should( 'exist' );
+    settingsPhnNumSubBtn()
+      .should( 'exist' );
+  } );
+
+  it( `SETTINGS: change phone number & password`, () => {
+    settingsPasswordInput()
+      .type( `${faker.hacker.adjective()}${faker.hacker.noun()}`, { delay: 50 } );
+    settingsPassSubBtn()
+      .click();
+    cy.wait( 3000 );
+    settingsPhoneNumberInput()
+      .type( `${faker.phone.phoneNumber( '###-###-####' )}`, { delay: 50 } );
+    settingsPhnNumSubBtn()
+      .click();
+    cy.wait( 3000 );
+  } );
+
+  it( `SETTINGS: clicks menu icon and routes to create plant`, () => {
+    const menuIconLabel = () => cy.get( `label[class="sidebarIconToggle"]` );
+    menuIconLabel()
+      .click();
+    cy.wait( 2000 );
+    const menuCreatePlantLi = () => cy.get( `li[class="menu-create"]` );
+    menuCreatePlantLi()
+      .click();
+    cy.wait( 2000 );
+    menuIconLabel()
+      .click();
+  } );
 } );
-// describe( 'WATER MY PLANTS LOGGED IN', () => {
-//   beforeEach( () => {
-//     localStorage.clear()
 
-//     cy.visit( 'http://localhost:3000/login' );
 
-//     const loginUsernameInput = () => cy.get( `input[name="username"]` );
-//     const loginPasswordInput = () => cy.get( `input[name="password"]` );
-//     const loginSubmitButton = () => cy.get( `button[class="login_button"]` );
+/********* CREATE-PLANT *** CREATE-PLANT *** CREATE-PLANT *** CREATE-PLANT *** CREATE-PLANT *** CREATE-PLANT *********/
 
-//     loginUsernameInput().type( 'lksdfjssdesfs', { delay: 50 } );
-//     loginPasswordInput().type( 'sldfk244dswE', { delay: 50 } );
+describe( 'WATER MY PLANTS: CREATE PLANT', () => {
+  beforeEach( () => {
+  } );
 
-//     loginSubmitButton().click();
-//   } );
+  // CREATE-PLANT: Benign elements
+  const createContainerDiv = () => cy.get( `div[testid="create-container"]` );
+  const createForm = () => cy.get( `form[class="add_plant_form"]` );
+  const createTitleH2 = () => cy.get( `h2[testid="create-title"]` );
   
-//   it( 'sanity checks', () => {
-//     expect( 10 ).to.equal( 10 );
-//     expect( 1 + 2 ).to.equal( 3 );
-//     expect( {} ).to.eql( {} );
-//     expect( 1 + 2 ).to.equal( 4 - 1 );
-//   } );
 
-//     /********* HOME *** HOME *** HOME *** HOME *** HOME *** HOME *********/
-// } );
+  // CREATE-PLANT: Inputs
+  const createNicknameInput = () => cy.get( `input[name="nickname"]` );
+  const createSpeciesInput = () => cy.get( `input[name="species"]` );
+  const createH2oFreqInput = () => cy.get( `input[name="h2o_frequency"]` );
+  const createImageInput = () => cy.get( `input[name="image"]` );
+
+  // CREATE-PLANT: Buttons/Links
+  const createSubmitBtn = () => cy.get( `button[class="add_plant_button"]` );
+
+  it( `CREATE: benign elements do/dont exist`, () => {
+    createContainerDiv()
+      .should( 'exist' );
+    createForm()
+      .should( 'exist' );
+    createTitleH2()
+      .should( 'exist' );
+  } );
+
+  it( `CREATE: inputs and buttons/links do/dont exist`, () => {
+    createNicknameInput()
+      .should( 'exist' );
+    createSpeciesInput()
+      .should( 'exist' );
+    createH2oFreqInput()
+      .should( 'exist' );
+    createImageInput()
+      .should( 'exist' );
+    createSubmitBtn()
+      .should( 'exist' );
+    createSubmitBtn()
+      .should( 'be.disabled' );
+  } );
+  
+  it( `CREATE: create a new plant`, () => {
+    createNicknameInput()
+      .type( `${faker.hacker.adjective()} ${faker.hacker.noun()}`, { delay: 50 } );
+    createSpeciesInput()
+      .type( `${faker.lorem.word()} ${faker.lorem.word()}`, { delay: 50 } );
+    createH2oFreqInput()
+      .type( 2, { delay: 50 } );
+    createImageInput()
+      .type( `https://picsum.photos/500/500`, { delay: 50 } );
+    createSubmitBtn()
+      .should( 'be.enabled' );
+    createSubmitBtn()
+      .click();
+  } );
+
+  it( `CREATE: logs out, logs in and routes to plants`, () => {
+    const headerLogoutIcon = () => cy.get( `svg[class="log-icon"]` );
+    headerLogoutIcon()
+      .click();
+    cy.visit( 'http://localhost:3000/login' );
+    const loginUsernameInput = () => cy.get( `input[name="username"]` );
+    loginUsernameInput()
+      .type( `lksdfjssdesfs`, { delay: 50 } );
+    const loginPasswordInput = () => cy.get( `input[name="password"]` );
+    loginPasswordInput()
+      .type( `sldfk244dswE`, { delay: 50 } );
+    const loginSubmitButton = () => cy.get( `button[class="login_button"]` );
+    loginSubmitButton()
+      .click();
+    cy.wait( 4000 );
+    const menuOpenIconLabel = () => cy.get( `label[class="sidebarIconToggle"]` );
+    const menuLinkPlants = () => cy.get( `a[href="/plants"]` );
+    cy.wait( 3000 );
+    menuOpenIconLabel()
+      .click();
+    cy.wait( 1000 );
+    menuLinkPlants()
+      .click();
+    cy.wait( 8000 );
+  } );
+} );
+
+
+/********* PLANTS *** PLANTS *** PLANTS *** PLANTS *** PLANTS *** PLANTS *********/
+
+describe( 'WATER MY PLANTS: PLANTS', () => {
+  beforeEach( () => {
+  } );
+
+  // PLANTS: Benign elements
+  const plantsContainerDiv = () => cy.get( `div[class="plants-container"]` );
+  const plantsContentDiv = () => cy.get( `div[class="plants"]` );
+  const plantsWrapperDiv = () => cy.get( `div[class="plants-wrapper"]` );
+  const plantsBoxDiv = () => cy.get( `div[class="plant_box"]` );
+  const plantsPlantDiv = () => cy.get( `div[class="myplant"]` );
+  const plantsImageImg = () => cy.get( `img[testid="plant-img"]` );
+  const plantsDataDiv = () => cy.get( `div[class="plant_data"]` );
+  const plantsDataContainerDiv = () => cy.get( `div[testid="plant-data-container"]` );
+  const plantsNicknameSpan = () => cy.get( `span[class="nickname"]` );
+  const plantsNicknameLabel = () => cy.get( `label[testid="plant-nickname-label"]` );
+  const plantsNicknamePar = () => cy.get( `p[testid="plant-nickname-par"]` );
+  const plantsSpeciesSpan = () => cy.get( `span[class="species"]` );
+  const plantsSpeciesLabel = () => cy.get( `label[testid="plant-species-label"]` );
+  const plantsSpeciesPar = () => cy.get( `p[testid="plant-species-par"]` );
+  const plantsH2oSpan = () => cy.get( `span[class="h2o-frequency"]` );
+  const plantsH2oLabel = () => cy.get( `label[testid="plant-h2o-label"]` );
+  const plantsH2oPar = () => cy.get( `p[testid="plant-h2o-par"]` );
+  const plantsBtnsContDiv = () => cy.get( `div[class="edit_delete_buttons"]` );
+
+
+  // PLANTS: Buttons/Links
+  const plantsImgLink = () => cy.get( `a[testid="plant-img-link"]` );
+  const plantsEditBtn = () => cy.get( `button[testid="plant-edit-button"]` );
+  const plantsDeleteBtn = () => cy.get( `button[testid="plant-delete-button"]` );
+  const plantsEditLinkAnchor = () => cy.get( `a[testid="plant-edit-link"]` );
+
+  it( `PLANTS: Benign elements do/dont exist`, () => {
+    plantsContainerDiv()
+      .should( 'exist' );
+    plantsContentDiv()
+      .should( 'exist' );
+    plantsWrapperDiv()
+      .should( 'exist' );
+    plantsBoxDiv()
+      .should( 'exist' );
+    plantsPlantDiv()
+      .should( 'exist' );
+    plantsImageImg()
+      .should( 'exist' );
+    plantsDataDiv()
+      .should( 'exist' );
+    plantsDataContainerDiv()
+      .should( 'exist' );
+    plantsNicknameSpan()
+      .should( 'exist' );
+    plantsNicknameLabel()
+      .should( 'exist' );
+    plantsNicknamePar()
+      .should( 'exist' );
+    plantsSpeciesSpan()
+      .should( 'exist' );
+    plantsSpeciesLabel()
+      .should( 'exist' );
+    plantsSpeciesPar()
+      .should( 'exist' );
+    plantsH2oSpan()
+      .should( 'exist' );
+    plantsH2oLabel()
+      .should( 'exist' );
+    plantsH2oPar()
+      .should( 'exist' );
+    plantsBtnsContDiv()
+      .should( 'exist' );
+  } );
+
+  it( `PLANTS: Buttons/Links do/dont exist`, () => {
+    plantsImgLink()
+      .should( 'exist' );
+    plantsEditBtn()
+      .should( 'exist' );
+    plantsEditBtn()
+      .should( 'be.enabled' );
+    plantsEditBtn()
+      .contains( 'Edit' );
+    plantsDeleteBtn()
+      .should( 'exist' );
+    plantsDeleteBtn()
+      .should( 'be.enabled' );
+    plantsDeleteBtn()
+      .contains( 'Delete' );
+    plantsEditLinkAnchor()
+      .should( 'exist' );
+  } );
+
+  it( `PLANTS: Clicking on the first plant's edit button and proceeding to edit plant`, () => {
+    plantsImageImg()
+      .first()
+      .click();
+    cy.wait( 4000 );
+  })
+
+})
 
 
 
 
 
-  /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
-  /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
-  /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
-  /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
   /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
   /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
   /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/

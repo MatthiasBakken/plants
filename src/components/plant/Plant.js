@@ -29,32 +29,32 @@ const Plant = (props) => {
 
       <div className="myplant">
 
-        <Link to={`/plant-page/${props.plantData.id}?nickname=${props.plantData.nickname}&species=${props.plantData.species}&h2o_frequency=${props.plantData.h2o_frequency}&image=${props.plantData.image}&id=${props.plantData.id}`} className="plant_img ">
-          <img src={`${props.plantData.image ? `${props.plantData.image}` : 'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'}`} alt="plant" />
+        <Link testid="plant-img-link" to={`/plant-page/${props.plantData.id}?nickname=${props.plantData.nickname}&species=${props.plantData.species}&h2o_frequency=${props.plantData.h2o_frequency}&image=${props.plantData.image}&id=${props.plantData.id}`} className="plant_img ">
+          <img testid="plant-img" src={`${props.plantData.image ? `${props.plantData.image}` : 'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'}`} alt="plant" />
         </Link>
 
         <div className="plant_data">
-          <div>
+          <div testid="plant-data-container">
             <span className="nickname">
-              <label>Nickname: </label><br/>
-              <p>{`${props.plantData.nickname}`}</p>
+              <label testid="plant-nickname-label">Nickname: </label><br/>
+              <p testid="plant-nickname-par">{`${props.plantData.nickname}`}</p>
             </span>
             <span className="species">
-              <label>Species: </label><br/>
-              <p>{`${props.plantData.species}`}</p>
+              <label testid="plant-species-label">Species: </label><br/>
+              <p testid="plant-species-par">{`${props.plantData.species}`}</p>
             </span>
             <span className="h2o-frequency">
-              <label>H2o Frequency: </label><br/>
-              <p>{`${props.plantData.h2o_frequency}`}</p>
+              <label testid="plant-h2o-label">H2o Frequency: </label><br/>
+              <p testid="plant-h2o-par">{`${props.plantData.h2o_frequency}`}</p>
             </span>
           </div>
         </div>
 
         <div className="edit_delete_buttons">
-          <Link to={`/edit-plant/${props.plantData.id}`} >
-            <button >Edit</button>
+          <Link testid="plant-edit-link" to={`/edit-plant/${props.plantData.id}`} >
+            <button testid="plant-edit-button">Edit</button>
           </Link>
-          <button onClick={() => onClickDeleteHandler()} >Delete</button>
+          <button testid="plant-delete-button" onClick={() => onClickDeleteHandler()} >Delete</button>
         </div>
 
       </div>

@@ -48,6 +48,7 @@ const CreatePlantForm = (props) => {
                 }, { headers: { authorization: `bearer ${jwtToken}` } } )
                     .then( userRes => {
                         window.location.replace( "/plants" );
+                        return userRes;
                     } );
             } )
             .catch( err => console.log( "cannot post plant", { err } ) );
@@ -57,10 +58,10 @@ const CreatePlantForm = (props) => {
 
     if ( jwtToken ) {
         return (
-            <div>
+            <div testid="create-container">
             
                 <form className="add_plant_form" onSubmit={handleSubmit}>
-                    <h2>Add a New Plant</h2>
+                    <h2 testid="create-title">Add a New Plant</h2>
                     <input
                         type="text"
                         name="nickname"

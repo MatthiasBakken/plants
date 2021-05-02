@@ -54,6 +54,7 @@ const EditPlant = (props) => {
     } )
       .then( plantRes => {
         window.location.replace( '/plants' );
+        return plantRes;
       } )
       .catch( err => console.log( "cannot post plant", { err } ) );
   };

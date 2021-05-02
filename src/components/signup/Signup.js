@@ -18,7 +18,7 @@ const SignupSchema = Yup.object().shape( {
     .required( 'Required' ),
   password: Yup.string()
     .min( 8, 'Must be at least 8 characters long' )
-    .max( 16, 'Must be 16 characters or less')
+    .max( 24, 'Must be 24 characters or less')
     .required( 'Required' ),
 } );
 

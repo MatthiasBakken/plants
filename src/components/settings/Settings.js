@@ -7,18 +7,17 @@ import axios from 'axios';
 import './settings.scss';
 
 
-const phoneNumberRegex = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
-
 const ChangePasswordSchema = Yup.object().shape( {
   password: Yup.string()
     .min( 8, 'Must be at least 8 characters long' )
-    .max( 16, 'Must be no more than 16 characters long' )
+    .max( 24, 'Must be no more than 24 characters long' )
     .required( 'Some value is required to update your password' )
 } );
 
 const ChangePhoneNumberSchema = Yup.object().shape( {
   phoneNumber: Yup.string()
-    .matches( `${phoneNumberRegex}`, 'Phone number is not valid' )
+    .min( 7, 'Number is too short' )
+    .max(15, 'Number is too long')
     .required( 'Must enter a valid number if you plan to update' )
 } );
 
@@ -44,7 +43,8 @@ const Settings = (props) => {
   
             validationSchema={ChangePasswordSchema}
   
-            onSubmit={( values ) => {
+            onSubmit={( values, e ) => {
+              e.stopPropagation()
               axios.put( `https://tt157-backend.herokuapp.com/api/users/${userId}`, {
                 password: values.password
               } , {
@@ -55,16 +55,17 @@ const Settings = (props) => {
             }}
           >
             {( { errors, touched, isValid, dirty, values } ) => (
-              <Form className="settings_forms">
+              <Form className="settings_forms" testid="form1">
                 <label className="update_pass">Update Password</label>
                 <Field name="password" placeholder="abcD1234?" />
                 {errors.password && touched.password ? (
-                  <div>{errors.password}</div>
+                  <div testid="error-div-password">{errors.password}</div>
                 ) : null}
-                <span>
+                <span testid="settings-password-span">
                   <button
                     type="submit"
                     disabled={!( dirty && isValid && values.password )}
+                    testid="settings-password-submit"
                   >
                     Submit
                   </button>
@@ -79,7 +80,8 @@ const Settings = (props) => {
   
             validationSchema={ChangePhoneNumberSchema}
   
-            onSubmit={( values ) => {
+            onSubmit={( values, e ) => {
+              e.stopPropagation()
               let phoneNumber = parseInt( values.phoneNumber.replace( /[^0-9]/g, '' ) );
               axios.put( `https://tt157-backend.herokuapp.com/api/users/${userId}`, {
                 phone_number: phoneNumber
@@ -91,16 +93,17 @@ const Settings = (props) => {
             }}
           >
             {( { errors, touched, isValid, dirty, values } ) => (
-              <Form className="settings_forms">
+              <Form className="settings_forms" testid="form2">
                 <label className="update_phone">Update Phone Number</label>
                 <Field name="phoneNumber" placeholder="555-123-4567" />
                 {errors.phoneNumber && touched.phoneNumber ? (
-                  <div>{errors.phoneNumber}</div>
+                  <div testid="error-div-phoneNumber">{errors.phoneNumber}</div>
                 ) : null}
-                <span>
+                <span testid="settings-phoneNumber-span">
                   <button
                     type="submit"
                     disabled={!( dirty && isValid && values.phoneNumber )}
+                    testid="settings-phoneNumber-submit"
                   >
                     Submit
                   </button>
