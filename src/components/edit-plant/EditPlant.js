@@ -6,14 +6,14 @@ import { useLocation } from 'react-router-dom';
 import './edit-plant.scss';
 
 
-const EditPlant = (props) => {
+const EditPlant = ( props ) => {
 
   const initialPlant = {
     nickname: '',
     species: '',
     h2o_frequency: '',
     image: ''
-  }
+  };
 
   const jwtToken = localStorage.getItem( "jwtToken" );
 
@@ -25,10 +25,14 @@ const EditPlant = (props) => {
   plantId = plantId[ plantId.length - 1 ];
   
   useEffect( () => {
+    if ( !jwtToken ) {
+      window.location.replace( '/login' );
+    };
     pageTitle( "EDIT YOUR PLANT" );
     axios.get( `https://tt157-backend.herokuapp.com/api/plants/${plantId}` )
       .then( res => {
         setPlant( res.data );
+        return res.data;
       } );
   }, [] );
 
@@ -54,51 +58,55 @@ const EditPlant = (props) => {
     } )
       .then( plantRes => {
         window.location.replace( '/plants' );
+        return plantRes;
       } )
       .catch( err => console.log( "cannot post plant", { err } ) );
   };
   
-  if ( jwtToken ) {
-    return (
-      <div className="edit-plant-container">
-        <form onSubmit={handleSubmit}>
-          <h2>Edit Your Plant</h2>
-          <input
-            type="text"
-            name="nickname"
-            placeholder="Nick Name"
-            onChange={changeHandler}
-            value={plant.nickname}
-          />
-          <input
-            type="text"
-            name="species"
-            placeholder="Species"
-            onChange={changeHandler}
-            value={plant.species}
-          />
-          <input
-            type="number"
-            name="h2o_frequency"
-            placeholder="H2oFrecuency"
-            onChange={changeHandler}
-            value={plant.h2o_frequency}
-          />
-    
-          <input
-            type="string"
-            name="image"
-            placeholder="Image URL"
-            onChange={changeHandler}
-            value={plant.image}
-          />
-          <button>Update Plant</button>
-        </form>
-      </div>
-    );
-  } else {
-    window.location.replace( '/login' );
-  }
-}
+  return (
+    <div className="edit-plant-container">
+      {
+        jwtToken ?
+          <form onSubmit={handleSubmit} testid="edit-plant-form">
+            <h2 testid="edit-plant-title">Edit Your Plant</h2>
+            <input
+              type="text"
+              name="nickname"
+              placeholder="Nick Name"
+              onChange={changeHandler}
+              value={plant.nickname}
+            />
+            <input
+              type="text"
+              name="species"
+              placeholder="Species"
+              onChange={changeHandler}
+              value={plant.species}
+            />
+            <input
+              type="number"
+              name="h2o_frequency"
+              placeholder="H2oFrecuency"
+              onChange={changeHandler}
+              value={plant.h2o_frequency}
+            />
+        
+            <input
+              type="string"
+              name="image"
+              placeholder="Image URL"
+              onChange={changeHandler}
+              value={plant.image}
+            />
+            <button testid="edit-plant-submit">Update Plant</button>
+          </form>
+          :
+          <div>
+            ...
+          </div>
+      }
+    </div>
+  );
+};
 
 export default EditPlant;

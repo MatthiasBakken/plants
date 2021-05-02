@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "cypress": "^7.1.0",
+    "faker": "^5.5.3",
     "formik": "^2.2.6",
     "js-base64": "^3.6.0",
     "react": "^17.0.2",

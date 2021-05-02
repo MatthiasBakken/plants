@@ -9,12 +9,15 @@ import './Plants.css'
 const jwtToken = localStorage.getItem( "jwtToken" );
 const userId = localStorage.getItem( "userId" );
 
-const Plants = (props) => {
+const Plants = ( props ) => {
 
   const [ plants, setPlants ] = useState( [] );
   const { pageTitle } = props;
 
   useEffect( () => {
+    if ( !jwtToken ) {
+      window.location.replace( '/login' );
+    };
     axios.get( `https://tt157-backend.herokuapp.com/api/users/${userId}`, {
       headers: { authorization: `bearer ${jwtToken}` }
     } )
@@ -25,25 +28,29 @@ const Plants = (props) => {
     
   }, [] );
 
-  if ( jwtToken ) {
-    return (
-      <div className="plants-container">
-        <div className="plants">
-          <div className="plants-wrapper">
-            {
-              plants.map( plant => {
-                return (
+
+  return (
+    <div className="plants-container">
+      {
+        jwtToken ?
+          <div className="plants">
+            <div className="plants-wrapper">
+              {
+                plants.map( plant => {
+                  return (
                     <Plant plantData={plant} key={plant.id} />
-                );
-              } )
-            }
+                  );
+                } )
+              }
+            </div>
           </div>
-        </div>
-      </div>
-    );
-  } else {
-    window.location.replace( '/login' );
-  }
+          :
+          <div>
+            ...
+          </div>
+      }
+    </div>
+  );
 };
 
 
