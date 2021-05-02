@@ -22,16 +22,19 @@ const PlantPage = (props) => {
 
   const params = new URLSearchParams( window.location.search );
   useEffect( () => {
-    pageTitle(`${params.get("nickname").toUpperCase()}`)
+    pageTitle( `${params.get( "nickname" ).toUpperCase()}` );
     setPlant( {
       image: params.get( "image" ),
       nickname: params.get( "nickname" ),
       species: params.get( "species" ),
       h2o_frequency: params.get( "h2o_frequency" ),
       id: params.get( "id" )
-    })
-    console.log(  )
-    console.log(params.get("species"))
+    } );
+    console.log();
+    console.log( params.get( "species" ) );
+    if ( !jwtToken ) {
+      window.location.replace( '/login' );
+    };
   }, [] );
 
   const onClickDeleteHandler = () => {
@@ -45,10 +48,6 @@ const PlantPage = (props) => {
     }).catch(err => {
       return err;
     });
-  };
-  
-  if ( !jwtToken ) {
-    window.location.replace( '/login' );
   };
 
   return (

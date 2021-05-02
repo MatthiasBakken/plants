@@ -692,15 +692,41 @@ describe( 'WATER MY PLANTS: PLANTS', () => {
       .should( 'exist' );
   } );
 
-})
+  it( `PLANTS: logout, login, route to plants and click plant`, () => {
+    localStorage.clear();
+    cy.visit( 'http://localhost:3000/login' );
+    const loginUsernameInput = () => cy.get( `input[name="username"]` );
+    loginUsernameInput()
+      .type( `lksdfjssdesfs`, { delay: 50 } );
+    const loginPasswordInput = () => cy.get( `input[name="password"]` );
+    loginPasswordInput()
+      .type( `sldfk244dswE`, { delay: 50 } );
+    const loginSubmitButton = () => cy.get( `button[class="login_button"]` );
+    loginSubmitButton()
+      .click();
+    cy.wait( 2000 );
+    const menuOpenIconLabel = () => cy.get( `label[class="sidebarIconToggle"]` );
+    const menuLinkPlants = () => cy.get( `a[href="/plants"]` );
+    cy.wait( 2000 );
+    menuOpenIconLabel()
+      .click();
+    cy.wait( 1000 );
+    menuLinkPlants()
+      .click();
+    cy.wait( 3000 );
+    const plantImageImg = () => cy.get( `img[testid="plant-img"]` );
+    plantImageImg()
+      .first()
+      .click();
+    cy.wait( 2000 );
+  } );
+} );
 
 
 /********* PLANT-PAGE *** PLANT-PAGE *** PLANT-PAGE *** PLANT-PAGE *** PLANT-PAGE *** PLANT-PAGE *********/
 
 describe( `WATER MY PLANTS: PLANT-PAGE`, () => {
   beforeEach( () => {
-    cy.visit( `http://localhost:3000/plant-page/102?nickname=fldsfjdsflkserfsdfgdsgfsdgsdsgdsfggg&species=slsdkfjdslsdfsddsgfdsgsgsdgsdgfgd&h2o_frequency=1&image=&id=102` )
-    cy.wait( 3000 );
   } );
   
   // PLANT-PAGE: Benign elements
@@ -780,10 +806,35 @@ describe( `WATER MY PLANTS: PLANT-PAGE`, () => {
       .contains( 'Delete' );
   } );
 
-  it( `PLANT-PAGE: Clicks edit and routes to edit plant page`, () => {
-    plantEditButton()
+  it( `PLANTS: logout, login, route to plants and click plant`, () => {
+    localStorage.clear();
+    cy.visit( 'http://localhost:3000/login' );
+    const loginUsernameInput = () => cy.get( `input[name="username"]` );
+    loginUsernameInput()
+      .type( `lksdfjssdesfs`, { delay: 50 } );
+    const loginPasswordInput = () => cy.get( `input[name="password"]` );
+    loginPasswordInput()
+      .type( `sldfk244dswE`, { delay: 50 } );
+    const loginSubmitButton = () => cy.get( `button[class="login_button"]` );
+    loginSubmitButton()
+      .click();
+    cy.wait( 2000 );
+    const menuOpenIconLabel = () => cy.get( `label[class="sidebarIconToggle"]` );
+    const menuLinkPlants = () => cy.get( `a[href="/plants"]` );
+    cy.wait( 2000 );
+    menuOpenIconLabel()
+      .click();
+    cy.wait( 1000 );
+    menuLinkPlants()
       .click();
     cy.wait( 3000 );
+    const plantImageImg = () => cy.get( `img[testid="plant-img"]` );
+    plantImageImg()
+      .first()
+      .click();
+    cy.wait( 2000 );
+    plantEditButton()
+      .click();
   } );
 } );
 
@@ -792,10 +843,47 @@ describe( `WATER MY PLANTS: PLANT-PAGE`, () => {
 
 describe( `WATER MY PLANTS: EDIT-PLANT`, () => {
   beforeEach( () => {
+    cy.wait( 3000 );
   } );
 
   // EDIT-PLANT: Benign elements
-  
+  const editPlantContDiv = () => cy.get( `div[class="edit-plant-container"]` );
+  const editPlantForm = () => cy.get( `form[testid="edit-plant-form"]` );
+  const editPlantTitleH2 = () => cy.get( `h2[testid="edit-plant-title"]` );
+
   // EDIT-PLANT: Inputs
+  const editNicknameInput = () => cy.get( `input[name="nickname"]` );
+  const editSpeciesInput = () => cy.get( `input[name="species"]` );
+  const editH2oInput = () => cy.get( `input[name="h2o_frequency"]` );
+  const editImageImg = () => cy.get( `img[name="image"]` );
+
   // EDIT-PLANT: Buttons/Links
-})
+  const editPlantSubBtn = () => cy.get( `button[testid="edit-plant-submit"]` );
+
+  it( `EDIT-PLANT: check if elements exist and fill and submit edited plant`, () => {
+    editPlantContDiv()
+      .should( 'exist' );
+    editPlantForm()
+      .should( 'exist' );
+    editPlantTitleH2()
+      .should( 'exist' );
+    editPlantTitleH2()
+      .contains( 'Edit Your Plant' );
+    editNicknameInput()
+      .clear();
+    editNicknameInput()
+      .type( `${faker.hacker.adjective()} ${faker.hacker.noun()}`, { delay: 50 } );
+    editSpeciesInput()
+      .clear();
+    editSpeciesInput()
+      .type( `${faker.lorem.word()} ${faker.lorem.word()}`, { delay: 50 } );
+    editH2oInput()
+      .clear();
+    editH2oInput()
+      .type( 2, { delay: 50 } );
+    editImageImg()
+      .should( 'exist' );
+    editPlantSubBtn()
+      .click();
+  } );
+} );
