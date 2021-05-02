@@ -269,7 +269,7 @@ describe( 'WATER MY PLANTS: CREATE ACCOUNT', () => {
       .type( `${createPassword}`, { delay: 50 } );
     createSignupButton()
       .click();
-    cy.wait( 9000 );
+    cy.wait( 4000 );
   } );
 } );
 
@@ -298,7 +298,7 @@ describe( 'WATER MY PLANTS: ACCOUNT CREATED - HOME', () => {
   const headerLogoutIcon = () => cy.get( `svg[class="log-icon"]` );
 
   it( `HOME: benign elements do/dont exist`, () => {
-    cy.wait( 4000 );
+    cy.wait( 2000 );
     homePageContainerDiv()
       .should( 'exist' );
     homePageTitleH1()
@@ -333,7 +333,7 @@ describe( 'WATER MY PLANTS: ACCOUNT CREATED - HOME', () => {
   it( `HOME: logout`, () => {
     headerLogoutIcon()
       .click();
-    cy.wait( 4000 );
+    cy.wait( 2000 );
   } );
 } );
 
@@ -368,11 +368,11 @@ describe( 'WATER MY PLANTS: LOGGING IN - HOME', () => {
     const loginSubmitButton = () => cy.get( `button[class="login_button"]` );
     loginSubmitButton()
       .click();
-    cy.wait( 7000 );
+    cy.wait( 3000 );
   })
 
   it( `HOME: benign elements do/dont exist`, () => {
-    cy.wait( 4000 );
+    cy.wait( 2000 );
     homePageContainerDiv()
       .should( 'exist' );
     homePageTitleH1()
@@ -412,7 +412,7 @@ describe( 'WATER MY PLANTS: SETTINGS', () => {
     const settingsIcon = () => cy.get( `svg[class="set-icon"]` );
     settingsIcon()
       .click();
-    cy.wait( 3000 );
+    cy.wait( 1000 );
   } );
 
   // SETTINGS: Benign elements
@@ -490,12 +490,12 @@ describe( 'WATER MY PLANTS: SETTINGS', () => {
       .type( `${faker.hacker.adjective()}${faker.hacker.noun()}`, { delay: 50 } );
     settingsPassSubBtn()
       .click();
-    cy.wait( 3000 );
+    cy.wait( 1000 );
     settingsPhoneNumberInput()
       .type( `${faker.phone.phoneNumber( '###-###-####' )}`, { delay: 50 } );
     settingsPhnNumSubBtn()
       .click();
-    cy.wait( 3000 );
+    cy.wait( 1000 );
   } );
 
   it( `SETTINGS: clicks menu icon and routes to create plant`, () => {
@@ -587,16 +587,16 @@ describe( 'WATER MY PLANTS: CREATE PLANT', () => {
     const loginSubmitButton = () => cy.get( `button[class="login_button"]` );
     loginSubmitButton()
       .click();
-    cy.wait( 4000 );
+    cy.wait( 2000 );
     const menuOpenIconLabel = () => cy.get( `label[class="sidebarIconToggle"]` );
     const menuLinkPlants = () => cy.get( `a[href="/plants"]` );
-    cy.wait( 3000 );
+    cy.wait( 2000 );
     menuOpenIconLabel()
       .click();
     cy.wait( 1000 );
     menuLinkPlants()
       .click();
-    cy.wait( 8000 );
+    cy.wait( 4000 );
   } );
 } );
 
@@ -692,13 +692,6 @@ describe( 'WATER MY PLANTS: PLANTS', () => {
       .should( 'exist' );
   } );
 
-  it( `PLANTS: Clicking on the first plant's edit button and proceeding to edit plant`, () => {
-    plantsImageImg()
-      .first()
-      .click();
-    cy.wait( 4000 );
-  })
-
 })
 
 
@@ -706,6 +699,8 @@ describe( 'WATER MY PLANTS: PLANTS', () => {
 
 describe( `WATER MY PLANTS: PLANT-PAGE`, () => {
   beforeEach( () => {
+    cy.visit( `http://localhost:3000/plant-page/102?nickname=fldsfjdsflkserfsdfgdsgfsdgsdsgdsfggg&species=slsdkfjdslsdfsddsgfdsgsgsdgsdgfgd&h2o_frequency=1&image=&id=102` )
+    cy.wait( 3000 );
   } );
   
   // PLANT-PAGE: Benign elements
@@ -786,12 +781,21 @@ describe( `WATER MY PLANTS: PLANT-PAGE`, () => {
   } );
 
   it( `PLANT-PAGE: Clicks edit and routes to edit plant page`, () => {
-    cy.visit( 'http://localhost:3000/edit-plant/74' );
-    cy.wait( 8000 );
+    plantEditButton()
+      .click();
+    cy.wait( 3000 );
   } );
 } );
 
 
-  /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
-  /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
-  /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
+/********* EDIT-PLANT *** EDIT-PLANT *** EDIT-PLANT *** EDIT-PLANT *** EDIT-PLANT *** EDIT-PLANT *********/
+
+describe( `WATER MY PLANTS: EDIT-PLANT`, () => {
+  beforeEach( () => {
+  } );
+
+  // EDIT-PLANT: Benign elements
+  
+  // EDIT-PLANT: Inputs
+  // EDIT-PLANT: Buttons/Links
+})
