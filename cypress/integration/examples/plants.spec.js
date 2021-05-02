@@ -702,10 +702,96 @@ describe( 'WATER MY PLANTS: PLANTS', () => {
 })
 
 
+/********* PLANT-PAGE *** PLANT-PAGE *** PLANT-PAGE *** PLANT-PAGE *** PLANT-PAGE *** PLANT-PAGE *********/
+
+describe( `WATER MY PLANTS: PLANT-PAGE`, () => {
+  beforeEach( () => {
+  } );
+  
+  // PLANT-PAGE: Benign elements
+  const plantPageContainerDiv = () => cy.get( `div[class="plant-page-container"]` );
+  const plantBoxDiv = () => cy.get( `div[class="plant_box"]` );
+  const plantDiv = () => cy.get( `div[class="myplant"]` );
+  const plantImageContDiv = () => cy.get( `div[testid="plant-img-container"]` );
+  const plantImageImg = () => cy.get( `img[testid="plant-image"]` );
+  const plantDataDiv = () => cy.get( `div[testid="plant-data"]` );
+  const plantNicknameSpan = () => cy.get( `span[testid="plant-nickname-span"]` );
+  const plantNicknameLabel = () => cy.get( `label[testid="plant-nickname-label"]` );
+  const plantNicknamePar = () => cy.get( `p[testid="plant-nickname-par"]` );
+  const plantSpeciesSpan = () => cy.get( `span[testid="plant-species-span"]` );
+  const plantSpeciesLabel = () => cy.get( `label[testid="plant-species-label"]` );
+  const plantSpeciesPar = () => cy.get( `p[testid="plant-species-par"]` );
+  const plantH2oSpan = () => cy.get( `span[testid="plant-h2o-span"]` );
+  const planth2oLabel = () => cy.get( `label[testid="plant-h2o-label"]` );
+  const planth2oPar = () => cy.get( `p[testid="plant-h2o-par"]` );
+  const plantBtnsContDiv = () => cy.get( `div[testid="plant-btns-container"]` );
+
+  // PLANT-PAGE: Buttons/Links
+  const plantEditBtnAnchor = () => cy.get( `a[testid="plant-edit-btn-link"]` );
+  const plantEditButton = () => cy.get( `button[testid="plant-edit-btn"]` );
+  const plantDeleteBtn = () => cy.get( `button[testid="plant-delete-btn"]` );
+
+  it( `PLANT-PAGE: Benign elements do/dont exist`, () => {
+    plantPageContainerDiv()
+      .should( 'exist' );
+    plantBoxDiv()
+      .should( 'exist' );
+    plantDiv()
+      .should( 'exist' );
+    plantImageContDiv()
+      .should( 'exist' );
+    plantImageImg()
+      .should( 'exist' );
+    plantDataDiv()
+      .should( 'exist' );
+    plantNicknameSpan()
+      .should( 'exist' );
+    plantNicknameLabel()
+      .should( 'exist' );
+    plantNicknameLabel()
+      .contains( 'Nickname: ' );
+    plantNicknamePar()
+      .should( 'exist' );
+    plantSpeciesSpan()
+      .should( 'exist' );
+    plantSpeciesLabel()
+      .should( 'exist' );
+    plantSpeciesLabel()
+      .contains( 'Species: ' );
+    plantSpeciesPar()
+      .should( 'exist' );
+    plantH2oSpan()
+      .should( 'exist' );
+    planth2oLabel()
+      .should( 'exist' );
+    planth2oLabel()
+      .contains('H2o Frequency: ')
+    planth2oPar()
+      .should( 'exist' );
+    plantBtnsContDiv()
+      .should( 'exist' );
+  } );
+
+  it( `PLANT-PAGE: Buttons/Links do/dont exist`, () => {
+    plantEditBtnAnchor()
+      .should( 'exist' );
+    plantEditButton()
+      .should( 'exist' );
+    plantEditButton()
+      .contains( 'Edit' );
+    plantDeleteBtn()
+      .should( 'exist' );
+    plantDeleteBtn()
+      .contains( 'Delete' );
+  } );
+
+  it( `PLANT-PAGE: Clicks edit and routes to edit plant page`, () => {
+    cy.visit( 'http://localhost:3000/edit-plant/74' );
+    cy.wait( 8000 );
+  } );
+} );
 
 
-
-  /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
   /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
   /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
   /********* LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *** LOGIN *********/
