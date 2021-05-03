@@ -9,12 +9,12 @@ import './index.css';
 
 
 ReactDOM.render(
-  <Router>
-    <React.StrictMode>
+  <React.StrictMode>
+    <Router>
       <App />
-    </React.StrictMode>
-  </Router>,
-  document.getElementById('root')
+    </Router>
+  </React.StrictMode>,
+  document.getElementById( 'root' )
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { browserHistory as history } from 'react-router';
 
 import axios from 'axios';
 
@@ -22,7 +23,8 @@ const CreatePlantForm = ( props ) => {
     useEffect( () => {
         pageTitle( "ADD A PLANT" );
         if ( !jwtToken ) {
-            window.location.replace( '/' );
+            history.push( '/' );
+            window.location.reload();
         };
     }, [] );
 
@@ -50,8 +52,9 @@ const CreatePlantForm = ( props ) => {
                     plant_id: plantRes.data.id,
                 }, { headers: { authorization: `bearer ${jwtToken}` } } )
                     .then( userRes => {
-                        window.location.replace( "/plants" );
-                        return userRes;
+                        console.log( userRes );
+                        history.push( '/plants' );
+                        window.location.reload();
                     } );
             } )
             .catch( err => console.log( "cannot post plant", { err } ) );

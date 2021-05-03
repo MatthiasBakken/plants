@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom';
+import { browserHistory as history } from 'react-router';
 
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
-import { Link } from 'react-router-dom';
 
 import './login.scss';
 
@@ -27,7 +28,8 @@ function Login ( props ) {
 
     useEffect( () => {
         if ( jwtToken ) {
-            window.location.replace( '/home' );
+            history.push( '/home' );
+            window.location.reload();
         }
         const hr = ( new Date() ).getHours();
         if ( hr === 0 || hr < 11 ) {
@@ -71,7 +73,8 @@ function Login ( props ) {
                             };
                             const userId = parseJwt( jwtToken ).subject;
                             localStorage.setItem( 'userId', userId );
-                            window.location.replace( '/' );
+                            history.push( '/home' );
+                            window.location.reload();
                         } );
                     }}
                 >
