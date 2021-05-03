@@ -8,7 +8,7 @@ const Menu = () => {
 
   const onClickHandler = () => {
     localStorage.clear();
-    window.location.replace( "/login" );
+    window.location.replace( "/" );
   };
 
   return (
@@ -22,7 +22,7 @@ const Menu = () => {
       <div id="sidebarMenu">
         <ul className="sidebarMenuInner">
           <li className="menu-title">Plants <span>Menu Options</span></li>
-          <Link to="/">
+          <Link to="/home">
             <li className="menu-home">Home</li>
           </Link>
           <Link to="/plants">

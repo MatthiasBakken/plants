@@ -19,11 +19,16 @@ const LoginSchema = Yup.object().shape( {
     .required( 'Required' ),
 } );
 
+const jwtToken = localStorage.getItem( "jwtToken" );
+
 function Login ( props ) {
     
     const { pageTitle } = props;
 
     useEffect( () => {
+        if ( jwtToken ) {
+            window.location.replace( '/home' );
+        }
         const hr = ( new Date() ).getHours();
         if ( hr === 0 || hr < 11 ) {
             localStorage.setItem( "greetingTime", "Good Morning, " );

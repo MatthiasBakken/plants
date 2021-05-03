@@ -30,7 +30,7 @@ const Settings = ( props ) => {
   useEffect( () => {
     pageTitle( "SETTINGS" );
     if ( !jwtToken ) {
-      window.location.replace( '/login' );
+      window.location.replace( '/' );
     };
   }, [] );
 

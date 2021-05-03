@@ -22,7 +22,7 @@ const CreatePlantForm = ( props ) => {
     useEffect( () => {
         pageTitle( "ADD A PLANT" );
         if ( !jwtToken ) {
-            window.location.replace( '/login' );
+            window.location.replace( '/' );
         };
     }, [] );
 

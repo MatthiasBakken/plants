@@ -58,7 +58,7 @@ const Signup = ( props ) => {
             };
             const userId = parseJwt( jwtToken ).subject;
             localStorage.setItem( 'userId', userId );
-            window.location.replace( '/' );
+            window.location.replace( '/home' );
           })
         }}
       >
