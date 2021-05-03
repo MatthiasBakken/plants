@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { browserHistory as history } from 'react-router';
 
 import './menu.css';
 
@@ -8,7 +9,8 @@ const Menu = () => {
 
   const onClickHandler = () => {
     localStorage.clear();
-    window.location.replace( "/" );
+    history.push( '/' );
+    window.location.reload();
   };
 
   return (

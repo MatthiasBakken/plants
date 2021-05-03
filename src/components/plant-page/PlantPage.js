@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { browserHistory as history } from 'react-router';
 
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import './plant-page.scss'
 
 
@@ -33,7 +34,8 @@ const PlantPage = (props) => {
     console.log();
     console.log( params.get( "species" ) );
     if ( !jwtToken ) {
-      window.location.replace( '/' );
+      history.push( '/' );
+      window.location.reload();
     };
   }, [] );
 

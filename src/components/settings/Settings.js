@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { browserHistory as history } from 'react-router';
 
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
@@ -30,7 +31,8 @@ const Settings = ( props ) => {
   useEffect( () => {
     pageTitle( "SETTINGS" );
     if ( !jwtToken ) {
-      window.location.replace( '/' );
+      history.push( '/' );
+      window.location.reload();
     };
   }, [] );
 
