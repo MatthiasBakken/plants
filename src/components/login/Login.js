@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
-import { browserHistory as history } from 'react-router';
 
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -20,17 +19,11 @@ const LoginSchema = Yup.object().shape( {
     .required( 'Required' ),
 } );
 
-const jwtToken = localStorage.getItem( "jwtToken" );
-
 function Login ( props ) {
     
     const { pageTitle } = props;
 
     useEffect( () => {
-        if ( jwtToken ) {
-            history.push( '/home' );
-            window.location.reload();
-        }
         const hr = ( new Date() ).getHours();
         if ( hr === 0 || hr < 11 ) {
             localStorage.setItem( "greetingTime", "Good Morning, " );
@@ -73,8 +66,7 @@ function Login ( props ) {
                             };
                             const userId = parseJwt( jwtToken ).subject;
                             localStorage.setItem( 'userId', userId );
-                            history.push( '/home' );
-                            window.location.reload();
+                            window.location.replace( '/home' );
                         } );
                     }}
                 >

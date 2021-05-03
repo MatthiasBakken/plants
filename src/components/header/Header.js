@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { browserHistory as history } from 'react-router';
 import { RiSettings3Line, RiShutDownLine } from 'react-icons/ri'
 
 import './header.scss';
@@ -18,8 +17,7 @@ const Header = ( props ) => {
 
   const onClickHandler = () => {
     localStorage.clear();
-    history.push( '/' );
-    window.location.reload();
+    window.location.replace( '/' );
   };
 
   if ( title === "LOGIN" || title === "CREATE ACCOUNT" || window.screen.availWidth < 670 ) {

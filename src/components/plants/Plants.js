@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { browserHistory as history } from 'react-router';
 
 import axios from 'axios';
 
@@ -16,10 +15,6 @@ const Plants = ( props ) => {
   const { pageTitle } = props;
 
   useEffect( () => {
-    if ( !jwtToken ) {
-      history.push( '/' );
-      window.location.reload();
-    };
     axios.get( `https://tt157-backend.herokuapp.com/api/users/${userId}`, {
       headers: { authorization: `bearer ${jwtToken}` }
     } )

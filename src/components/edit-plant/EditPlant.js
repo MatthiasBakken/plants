@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { browserHistory as history } from 'react-router';
 
 import axios from 'axios';
 
@@ -26,10 +25,6 @@ const EditPlant = ( props ) => {
   plantId = plantId[ plantId.length - 1 ];
   
   useEffect( () => {
-    if ( !jwtToken ) {
-      history.push( "/" );
-      window.location.reload();
-    };
     pageTitle( "EDIT YOUR PLANT" );
     axios.get( `https://tt157-backend.herokuapp.com/api/plants/${plantId}` )
       .then( res => {
@@ -60,8 +55,7 @@ const EditPlant = ( props ) => {
     } )
       .then( plantRes => {
         console.log( plantRes );
-        history.push( '/plants' );
-        window.location.reload();
+        window.location.replace( '/plants' );
       } )
       .catch( err => console.log( "cannot post plant", { err } ) );
   };

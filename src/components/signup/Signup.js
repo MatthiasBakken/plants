@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { browserHistory as history } from 'react-router';
 
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -59,8 +58,7 @@ const Signup = ( props ) => {
             };
             const userId = parseJwt( jwtToken ).subject;
             localStorage.setItem( 'userId', userId );
-            history.push( '/home' );
-            window.location.reload();
+            window.location.replace( '/home' );
           })
         }}
       >

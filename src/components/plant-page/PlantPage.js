@@ -33,10 +33,6 @@ const PlantPage = (props) => {
     } );
     console.log();
     console.log( params.get( "species" ) );
-    if ( !jwtToken ) {
-      history.push( '/' );
-      window.location.reload();
-    };
   }, [] );
 
   const onClickDeleteHandler = () => {

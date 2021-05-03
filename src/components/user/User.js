@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
-import { browserHistory as history } from 'react-router';
 
 import './user.scss'
 
@@ -13,10 +12,6 @@ const User = ( props ) => {
 
   useEffect( () => {
     pageTitle( "HOME" );
-    if ( !jwtToken ) {
-      history.push( '/' );
-      window.location.reload();
-    };
   }, [] );
 
   return (

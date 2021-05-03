@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import Settings from "./components/settings/Settings";
 import Header from "./components/header/Header"
@@ -19,7 +19,7 @@ import "./components/header/header.css";
 function App () {
 
   const [ title, setTitle ] = useState( "Water My Plants" );
-
+  const jwtToken = localStorage.getItem( "jwtToken" );
   const pageTitleHandler = ( title ) => {
     setTitle( title );
     return title;
@@ -31,28 +31,42 @@ function App () {
       <Menu pageTitle={pageTitleHandler} />
       <Switch>
         <Route exact path="/">
-          <Login pageTitle={pageTitleHandler} />
+          {!jwtToken ?
+            <Login pageTitle={pageTitleHandler} /> : <Redirect to="/home" />
+          }
         </Route>
         <Route exact path="/signup">
           <Signup pageTitle={pageTitleHandler} />
         </Route>
         <Route exact path="/home">
-          <User pageTitle={pageTitleHandler} />
+          {jwtToken ?
+            <User pageTitle={pageTitleHandler} /> : <Redirect to="/" />
+          }
         </Route>
         <Route exact path="/plants">
-          <Plants pageTitle={pageTitleHandler} />
+          {jwtToken ?
+            <Plants pageTitle={pageTitleHandler} /> : <Redirect to="/" />
+          }
         </Route>
         <Route exact path="/plant-page/:id?">
-          <PlantPage pageTitle={pageTitleHandler} />
+          {jwtToken ?
+            <PlantPage pageTitle={pageTitleHandler} /> : <Redirect to="/" />
+          }
         </Route>
         <Route exact path="/create-plant">
-          <CreateNewPlant pageTitle={pageTitleHandler} />
+          {jwtToken ?
+            <CreateNewPlant pageTitle={pageTitleHandler} /> : <Redirect to="/" />
+          }
         </Route>
         <Route exact path="/edit-plant/:id">
-          <EditPlant pageTitle={pageTitleHandler} />
+          {jwtToken ?
+            <EditPlant pageTitle={pageTitleHandler} /> : <Redirect to="/" />
+          }
         </Route>
         <Route exact path="/settings">
-          <Settings pageTitle={pageTitleHandler} />
+          {jwtToken ?
+            <Settings pageTitle={pageTitleHandler} /> : <Redirect to="/" />
+          }
         </Route>
       </Switch>
     </div>
