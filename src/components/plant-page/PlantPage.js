@@ -33,7 +33,7 @@ const PlantPage = (props) => {
     console.log();
     console.log( params.get( "species" ) );
     if ( !jwtToken ) {
-      window.location.replace( '/login' );
+      window.location.replace( '/' );
     };
   }, [] );
 

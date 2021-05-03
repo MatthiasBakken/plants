@@ -13,7 +13,7 @@ const User = ( props ) => {
   useEffect( () => {
     pageTitle( "HOME" );
     if ( !jwtToken ) {
-      window.location.replace( '/login' );
+      window.location.replace( '/' );
     };
   }, [] );
 

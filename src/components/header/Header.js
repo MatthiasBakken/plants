@@ -17,7 +17,7 @@ const Header = ( props ) => {
 
   const onClickHandler = () => {
     localStorage.clear();
-    window.location.replace( "/login" );
+    window.location.replace( "/" );
   };
 
   if ( title === "LOGIN" || title === "CREATE ACCOUNT" || window.screen.availWidth < 670 ) {

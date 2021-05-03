@@ -26,7 +26,7 @@ const EditPlant = ( props ) => {
   
   useEffect( () => {
     if ( !jwtToken ) {
-      window.location.replace( '/login' );
+      window.location.replace( '/' );
     };
     pageTitle( "EDIT YOUR PLANT" );
     axios.get( `https://tt157-backend.herokuapp.com/api/plants/${plantId}` )

@@ -31,10 +31,13 @@ function App () {
       <Menu pageTitle={pageTitleHandler} />
       <Switch>
         <Route exact path="/">
-          <User pageTitle={pageTitleHandler} />
+          <Login pageTitle={pageTitleHandler} />
         </Route>
         <Route exact path="/signup">
           <Signup pageTitle={pageTitleHandler} />
+        </Route>
+        <Route exact path="/home">
+          <User pageTitle={pageTitleHandler} />
         </Route>
         <Route exact path="/plants">
           <Plants pageTitle={pageTitleHandler} />
@@ -50,9 +53,6 @@ function App () {
         </Route>
         <Route exact path="/settings">
           <Settings pageTitle={pageTitleHandler} />
-        </Route>
-        <Route exact path="/login">
-          <Login pageTitle={pageTitleHandler} />
         </Route>
       </Switch>
     </div>
