@@ -67,7 +67,7 @@ function Login ( props ) {
                             };
                             const userId = parseJwt( jwtToken ).subject;
                             localStorage.setItem( 'userId', userId );
-                            return history.replace( '/home' );
+                            return history.push( '/home' );
                         } );
                     }}
                 >
