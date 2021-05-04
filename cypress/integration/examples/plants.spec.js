@@ -10,7 +10,7 @@ describe( 'WATER MY PLANTS: LOGIN PAGE', () => {
   } );
   
   it( 'sanity checks', () => {
-    cy.visit( 'http://localhost:3000/login' );
+    cy.visit( 'http://localhost:3000/' );
     localStorage.clear();
     expect( 10 ).to.equal( 10 );
     expect( 1 + 2 ).to.equal( 3 );
@@ -92,7 +92,7 @@ describe( 'WATER MY PLANTS: LOGIN PAGE', () => {
 
   // Menu: Buttons/Links
   const menuOpenIcon = () => cy.get( `input[class="openSidebarMenu"]` );
-  const menuLinkHome = () => cy.get( `a[href="/"]` );
+  const menuLinkHome = () => cy.get( `a[href="/home"]` );
   const menuLinkPlants = () => cy.get( `a[href="/plants"]` );
   const menuLinkCreate = () => cy.get( `a[href="/create-plant"]` );
   const menuLinkSettings = () => cy.get( `a[href="/settings"]` );
@@ -207,7 +207,7 @@ describe( 'WATER MY PLANTS: LOGIN PAGE', () => {
 
 describe( 'WATER MY PLANTS: CREATE ACCOUNT', () => {
   beforeEach( () => {
-    cy.visit( 'http://localhost:3000/login' );
+    cy.visit( 'http://localhost:3000/' );
 
     const loginCreateAccountSpan = () => cy.get( `span[class="click_here"]` );
     loginCreateAccountSpan().click();
@@ -694,7 +694,7 @@ describe( 'WATER MY PLANTS: PLANTS', () => {
 
   it( `PLANTS: logout, login, route to plants and click plant`, () => {
     localStorage.clear();
-    cy.visit( 'http://localhost:3000/login' );
+    cy.visit( 'http://localhost:3000/' );
     const loginUsernameInput = () => cy.get( `input[name="username"]` );
     loginUsernameInput()
       .type( `lksdfjssdesfs`, { delay: 50 } );
@@ -808,7 +808,7 @@ describe( `WATER MY PLANTS: PLANT-PAGE`, () => {
 
   it( `PLANTS: logout, login, route to plants and click plant`, () => {
     localStorage.clear();
-    cy.visit( 'http://localhost:3000/login' );
+    cy.visit( 'http://localhost:3000/' );
     const loginUsernameInput = () => cy.get( `input[name="username"]` );
     loginUsernameInput()
       .type( `lksdfjssdesfs`, { delay: 50 } );
