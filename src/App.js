@@ -31,7 +31,7 @@ function App () {
       <Menu pageTitle={pageTitleHandler} />
       <Switch>
         <Route exact path="/" render={routeProps =>
-          {!jwtToken ?
+          {return !jwtToken ?
             <Login pageTitle={pageTitleHandler} {...routeProps} /> : <Redirect to="/home" />
           }
         }
