@@ -30,11 +30,12 @@ function App () {
       <Header pageTitle={pageTitleHandler} propsTitle={ title } />
       <Menu pageTitle={pageTitleHandler} />
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/" render={routeProps =>
           {!jwtToken ?
-            <Login pageTitle={pageTitleHandler} /> : <Redirect to="/home" />
+            <Login pageTitle={pageTitleHandler} {...routeProps} /> : <Redirect to="/home" />
           }
-        </Route>
+        }
+        />
         <Route exact path="/signup">
           <Signup pageTitle={pageTitleHandler} />
         </Route>
