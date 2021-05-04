@@ -21,9 +21,10 @@ const LoginSchema = Yup.object().shape( {
 
 function Login ( props ) {
     
-    const { pageTitle } = props;
+    const { pageTitle, history } = props;
 
     useEffect( () => {
+        console.log( history );
         const hr = ( new Date() ).getHours();
         if ( hr === 0 || hr < 11 ) {
             localStorage.setItem( "greetingTime", "Good Morning, " );
@@ -66,7 +67,7 @@ function Login ( props ) {
                             };
                             const userId = parseJwt( jwtToken ).subject;
                             localStorage.setItem( 'userId', userId );
-                            this.props.history.push( '/home' );
+                            return history.replace( '/home' );
                         } );
                     }}
                 >

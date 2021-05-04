@@ -32,7 +32,7 @@ function App () {
       <Switch>
         <Route exact path="/" render={routeProps =>
           {return !jwtToken ?
-            <Login pageTitle={pageTitleHandler} {...routeProps} /> : <Redirect to="/home" />
+          <Login pageTitle={pageTitleHandler} {...routeProps} /> : <Redirect to="/home" />
           }
         }
         />
