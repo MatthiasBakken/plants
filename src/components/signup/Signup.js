@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-
+import { useHistory } from "react-router-dom";
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -24,6 +24,7 @@ const SignupSchema = Yup.object().shape( {
 
 const Signup = ( props ) => {
   const { pageTitle } = props;
+  const { push } = useHistory();
 
   useEffect( () => {
     pageTitle( "CREATE ACCOUNT" );
@@ -58,7 +59,7 @@ const Signup = ( props ) => {
             };
             const userId = parseJwt( jwtToken ).subject;
             localStorage.setItem( 'userId', userId );
-            window.location.replace( '/home' );
+            push( '/home' );
           })
         }}
       >

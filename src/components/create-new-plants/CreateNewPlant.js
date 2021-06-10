@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { useHistory } from "react-router-dom";
 import axios from 'axios';
 
 import "./CreateNewPlant.scss"
@@ -18,7 +18,8 @@ const userId = localStorage.getItem( "userId" );
 const CreatePlantForm = ( props ) => {
     const [ plant, setPlant ] = useState( initialPlant );
     const { pageTitle } = props;
-    
+    const { push } = useHistory();
+
     useEffect( () => {
         pageTitle( "ADD A PLANT" );
     }, [] );
@@ -48,7 +49,7 @@ const CreatePlantForm = ( props ) => {
                 }, { headers: { authorization: `bearer ${jwtToken}` } } )
                     .then( userRes => {
                         console.log( userRes );
-                        window.location.replace( '/plants' );
+                        push( '/plants' );
                     } );
             } )
             .catch( err => console.log( "cannot post plant", { err } ) );

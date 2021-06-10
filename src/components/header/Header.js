@@ -16,7 +16,7 @@ const Header = ( props ) => {
   }, [ props.propsTitle ] );
 
   const onClickHandler = () => {
-    localStorage.clear();
+    localStorage.removeItem("jwtToken");
     window.location.replace( '/' );
   };
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -19,6 +19,7 @@ const EditPlant = ( props ) => {
 
   const [ plant, setPlant ] = useState( initialPlant );
   const { pageTitle } = props;
+  const { push } = useHistory();
 
   let queryStr = `${useLocation().pathname}`;
   let plantId = queryStr.split( "/" );
@@ -55,7 +56,7 @@ const EditPlant = ( props ) => {
     } )
       .then( plantRes => {
         console.log( plantRes );
-        window.location.replace( '/plants' );
+        push( '/plants' );
       } )
       .catch( err => console.log( "cannot post plant", { err } ) );
   };

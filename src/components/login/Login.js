@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -22,6 +22,7 @@ const LoginSchema = Yup.object().shape( {
 function Login ( props ) {
     
     const { pageTitle, history } = props;
+    const { push } = useHistory();
 
     useEffect( () => {
         console.log( history );
@@ -67,7 +68,7 @@ function Login ( props ) {
                             };
                             const userId = parseJwt( jwtToken ).subject;
                             localStorage.setItem( 'userId', userId );
-                            return history.push( '/home' );
+                            push( '/home' );
                         } );
                     }}
                 >

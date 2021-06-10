@@ -7,7 +7,7 @@ import './menu.css';
 const Menu = () => {
 
   const onClickHandler = () => {
-    localStorage.clear();
+    localStorage.removeItem("jwtToken");
     window.location.replace( '/' );
   };
 

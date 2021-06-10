@@ -30,45 +30,45 @@ function App () {
       <Header pageTitle={pageTitleHandler} propsTitle={ title } />
       <Menu pageTitle={pageTitleHandler} />
       <Switch>
-        <Route exact path="/" render={routeProps =>
+        <Route exact path="/" render={props =>
           {return !jwtToken ?
-          <Login pageTitle={pageTitleHandler} {...routeProps} /> : <Redirect to="/home" />
+          <Login pageTitle={pageTitleHandler} {...props} /> : <Redirect to="/home" />
           }
         }
         />
         <Route exact path="/signup">
           <Signup pageTitle={pageTitleHandler} />
         </Route>
-        <Route exact path="/home">
-          {jwtToken ?
-            <User pageTitle={pageTitleHandler} /> : <Redirect to="/" />
+        <Route exact path="/home" render={props => {
+          return jwtToken ?
+            <User pageTitle={pageTitleHandler} {...props} /> : <Redirect to="/" />;
+        }
+        } />
+        <Route exact path="/plants" render={props => {
+          return jwtToken ?
+            <Plants pageTitle={pageTitleHandler} {...props} /> : <Redirect to="/" />;
+        }
+        }/>
+        <Route exact path="/plant-page/:id?" render={props => {
+          return jwtToken ?
+            <PlantPage pageTitle={pageTitleHandler} {...props} /> : <Redirect to="/" />;
+        }
+        }/>
+        <Route exact path="/create-plant" render={ props => 
+          {return jwtToken ?
+          <CreateNewPlant pageTitle={pageTitleHandler} {...props} /> : <Redirect to="/" />
           }
-        </Route>
-        <Route exact path="/plants">
-          {jwtToken ?
-            <Plants pageTitle={pageTitleHandler} /> : <Redirect to="/" />
+        } />
+        <Route exact path="/edit-plant/:id" render={ props =>
+          { return jwtToken ?
+            <EditPlant pageTitle={pageTitleHandler} {...props} /> : <Redirect to="/" />
           }
-        </Route>
-        <Route exact path="/plant-page/:id?">
-          {jwtToken ?
-            <PlantPage pageTitle={pageTitleHandler} /> : <Redirect to="/" />
-          }
-        </Route>
-        <Route exact path="/create-plant">
-          {jwtToken ?
-            <CreateNewPlant pageTitle={pageTitleHandler} /> : <Redirect to="/" />
-          }
-        </Route>
-        <Route exact path="/edit-plant/:id">
-          {jwtToken ?
-            <EditPlant pageTitle={pageTitleHandler} /> : <Redirect to="/" />
-          }
-        </Route>
-        <Route exact path="/settings">
-          {jwtToken ?
-            <Settings pageTitle={pageTitleHandler} /> : <Redirect to="/" />
-          }
-        </Route>
+        } />
+        <Route exact path="/settings" render={props => {
+          return jwtToken ?
+            <Settings pageTitle={pageTitleHandler} {...props} /> : <Redirect to="/" />;
+        }
+        } />
       </Switch>
     </div>
   );
