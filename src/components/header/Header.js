@@ -13,7 +13,7 @@ const Header = ( props ) => {
   useEffect( () => {
     setTitle( propsTitle );
     return title;
-  }, [ props.propsTitle ] );
+  }, [ propsTitle, title ] );
 
   const onClickHandler = () => {
     localStorage.removeItem("jwtToken");

@@ -29,7 +29,7 @@ const Settings = ( props ) => {
 
   useEffect( () => {
     pageTitle( "SETTINGS" );
-  }, [] );
+  });
 
   return (
     <div className="settings-container">

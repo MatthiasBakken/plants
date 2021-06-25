@@ -32,7 +32,7 @@ const EditPlant = ( props ) => {
         setPlant( res.data );
         return res.data;
       } );
-  }, [] );
+  });
 
   const changeHandler = e => {
     setPlant( {

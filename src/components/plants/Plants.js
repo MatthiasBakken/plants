@@ -23,7 +23,7 @@ const Plants = ( props ) => {
         setPlants( res.data.plants );
       } );
     
-  }, [] );
+  });
 
 
   return (

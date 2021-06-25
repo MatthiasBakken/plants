@@ -28,7 +28,7 @@ const Signup = ( props ) => {
 
   useEffect( () => {
     pageTitle( "CREATE ACCOUNT" );
-  }, [] );
+  });
   
   return (
     <div className="form-container">

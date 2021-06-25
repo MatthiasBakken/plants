@@ -37,7 +37,7 @@ function Login ( props ) {
             localStorage.setItem( "greetingTime", "Goodnight, " );
         };
         pageTitle( "LOGIN" );
-    }, [] );
+    });
 
     return (
         <div className="login-container">

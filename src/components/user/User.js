@@ -12,7 +12,7 @@ const User = ( props ) => {
 
   useEffect( () => {
     pageTitle( "HOME" );
-  }, [] );
+  });
 
   return (
     <div className='container'>

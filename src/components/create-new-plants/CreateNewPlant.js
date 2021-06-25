@@ -22,7 +22,7 @@ const CreatePlantForm = ( props ) => {
 
     useEffect( () => {
         pageTitle( "ADD A PLANT" );
-    }, [] );
+    });
 
     const changeHandler = e => {
         setPlant( {

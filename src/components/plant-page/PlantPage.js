@@ -19,9 +19,9 @@ const PlantPage = (props) => {
   const userId = localStorage.getItem("userId");
   const [ plant, setPlant ] = useState( initialPlant );
   const { pageTitle } = props;
-
-  const params = new URLSearchParams( window.location.search );
+  
   useEffect( () => {
+    const params = new URLSearchParams( window.location.search );
     pageTitle( `${params.get( "nickname" ).toUpperCase()}` );
     setPlant( {
       image: params.get( "image" ),
@@ -32,7 +32,7 @@ const PlantPage = (props) => {
     } );
     console.log();
     console.log( params.get( "species" ) );
-  }, [] );
+  }, [pageTitle]);
 
   const onClickDeleteHandler = () => {
 
